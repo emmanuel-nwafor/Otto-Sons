@@ -7,9 +7,11 @@ function HomeRendering() {
   return (
     <>
       {/* Rendering all Home components  */}
-      <Hero />
-      <Info />
-      <About />
+      <div className="">
+        <Hero />
+        {/* <Info />
+        <About /> */}
+      </div>
     </>
   );
 }
