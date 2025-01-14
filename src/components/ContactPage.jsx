@@ -15,7 +15,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const ContactPage = () => {
-  const position = [40.73061, -73.935242]; // Replace with your latitude and longitude
+  const position = [40.73061, -73.935242];
 
   return (
     <>
@@ -65,13 +65,16 @@ const ContactPage = () => {
                     placeholder="Write your message"
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-zinc-600 text-white py-2 px-4 rounded-md hover:bg-zinc-700
+                <br />
+                <a href="mailto:echinecherem729@gmail.com">
+                  <button
+                    type="submit"
+                    className="w-full bg-zinc-600 text-white py-2 px-4 rounded-md hover:bg-zinc-700
                  focus:outline-none focus:ring-2 focus:ring-blue-400"
-                >
-                  Send Message
-                </button>
+                  >
+                    Send Message
+                  </button>
+                </a>
                 <div className=" flex justify-evenly items-center ">
                   <div className=" pl-10 pr-20 p-[0.2px] bg-blue-600 "></div>
                   <p className="text-white text-center">OR</p>
@@ -79,15 +82,15 @@ const ContactPage = () => {
                 </div>
                 <div className="flex items-center justify-center">
                   <i
-                    class="bx bxl-twitter p-2 m-2 text-[15px] transition-all 
+                    class="bx bxl-twitter p-2 m-2 text-[26px] transition-all 
                 rounded-full hover:bg-blue-600 hover:text-white text-blue-600 border-blue-600 "
                   ></i>
                   <i
-                    class="bx bxl-whatsapp p-2 m-2 text-[15px] transition-all
+                    class="bx bxl-whatsapp p-2 m-2 text-[26px] transition-all
                  border-green-600 text-green-600 hover:text-white hover:bg-green-600 rounded-full "
                   ></i>
                   <i
-                    class="bx bxl-facebook p-2 m-2 text-[15px] transition-all
+                    class="bx bxl-facebook p-2 m-2 text-[26px] transition-all
                  rounded-full hover:bg-blue-600 hover:text-white text-blue-700 border-blue-700 "
                   ></i>{" "}
                 </div>

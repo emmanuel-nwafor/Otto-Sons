@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
 import logo from "/src/assets/logo1.png";
 
 const NavBar = () => {
@@ -35,7 +35,7 @@ const NavBar = () => {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex space-x-4 text-white">
+          <div className="hidden lg:flex space-x-4 text-white items-center  ">
             <a href="#home" className="hover:text-zinc-200 hover:underline">
               Home
             </a>
@@ -51,6 +51,12 @@ const NavBar = () => {
             {/* Link to Signup */}
             <Link to="/signup" className="hover:text-zinc-200 hover:underline">
               Signup
+            </Link>
+            {/* Link to Login */}
+            <Link to="/login" className="hover:text-zinc-200 hover:underline">
+              <button className="p-2 pl-6 pr-6 rounded-lg bg-zinc-500 hover:bg-zinc-700 transition-all ">
+                Login
+              </button>
             </Link>
           </div>
         </div>
@@ -77,6 +83,12 @@ const NavBar = () => {
             {/* Link to Signup */}
             <Link to="/signup" className="hover:text-zinc-200 hover:underline">
               Signup
+            </Link>
+            {/* Link to Login */}
+            <Link to="/login" className="hover:text-zinc-200 hover:underline">
+              <button className="p-2 pl-6 pr-6 rounded-lg bg-zinc-500 hover:bg-zinc-700 transition-all ">
+                Login
+              </button>
             </Link>
           </div>
         </div>

@@ -6,6 +6,7 @@ import About2 from "./About2";
 import Testimonials from "./Testimonials";
 import Partners from "./Partners";
 import ContactPage from "./ContactPage";
+import Footer from "./Footer";
 
 function HomeRendering() {
   return (
@@ -19,6 +20,7 @@ function HomeRendering() {
         <Partners />
         <Testimonials />
         <ContactPage />
+        <Footer />
       </div>
     </>
   );
