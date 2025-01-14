@@ -9,7 +9,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className=" bg-transparent backdrop-blur-md max-md:p-1 p-4 m-5 fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <nav className=" bg-transparent backdrop-blur-md max-md:p-0 p-4 m-5 fixed top-0 left-0 right-0 z-50 shadow-lg">
       <div className="  container mx-auto flex justify-between items-center">
         {/* Logo / Brand */}
         <div className=" flex items-center ">
@@ -45,6 +45,9 @@ const NavBar = () => {
           <a href="#contact" className="hover:text-zinc-200 hover:underline">
             Contact
           </a>
+          <a href="#contact" className="hover:text-zinc-200 hover:underline">
+            Dashboard
+          </a>
         </div>
       </div>
 
@@ -66,6 +69,9 @@ const NavBar = () => {
           </a>
           <a href="#contact" className="hover:text-zinc-200 hover:underline">
             Contact
+          </a>
+          <a href="#contact" className="hover:text-zinc-200 hover:underline">
+            Dashboard
           </a>
         </div>
       </div>

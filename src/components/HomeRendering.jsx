@@ -4,6 +4,8 @@ import Hero from "./Hero";
 import About from "./About";
 import About2 from "./About2";
 import Testimonials from "./Testimonials";
+import Partners from "./Partners";
+import Contact from "./Contact";
 
 function HomeRendering() {
   return (
@@ -14,7 +16,9 @@ function HomeRendering() {
         <Info />
         <About />
         <About2 />
+        <Partners />
         <Testimonials />
+        <Contact />
       </div>
     </>
   );
