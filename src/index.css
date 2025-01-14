@@ -8,10 +8,6 @@ body {
   padding: 0;
 }
 
-.leaflet-container {
-  height: 300px;
-  width: 100%;
-  border: 1px solid #ddd;
+.leaflet {
   z-index: 1;
-  border-radius: 10px;
 }

@@ -5,7 +5,7 @@ import About from "./About";
 import About2 from "./About2";
 import Testimonials from "./Testimonials";
 import Partners from "./Partners";
-import Contact from "./Contact";
+import ContactPage from "./ContactPage";
 
 function HomeRendering() {
   return (
@@ -18,7 +18,7 @@ function HomeRendering() {
         <About2 />
         <Partners />
         <Testimonials />
-        <Contact />
+        <ContactPage />
       </div>
     </>
   );

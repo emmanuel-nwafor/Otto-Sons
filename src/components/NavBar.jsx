@@ -11,7 +11,6 @@ const NavBar = () => {
   return (
     <nav className=" bg-transparent backdrop-blur-md max-md:p-0 p-4 m-5 fixed top-0 left-0 right-0 z-50 shadow-lg">
       <div className="  container mx-auto flex justify-between items-center">
-        {/* Logo / Brand */}
         <div className=" flex items-center ">
           <img src={logo} className=" h-20 " alt="" />
           <h1 className="text-white font-extrabold text-xl">Otto</h1>
@@ -46,7 +45,7 @@ const NavBar = () => {
             Contact
           </a>
           <a href="#contact" className="hover:text-zinc-200 hover:underline">
-            Dashboard
+            Signup
           </a>
         </div>
       </div>
@@ -71,7 +70,7 @@ const NavBar = () => {
             Contact
           </a>
           <a href="#contact" className="hover:text-zinc-200 hover:underline">
-            Dashboard
+            Signup
           </a>
         </div>
       </div>

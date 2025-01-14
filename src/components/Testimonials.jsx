@@ -32,6 +32,23 @@ function Testimonials() {
                 <i class="bx bxs-star text-yellow-500"></i>
                 <i class="bx bxs-star-half text-yellow-500"></i>
               </div>
+              <div className="m-2 flex">
+                <img
+                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                  className="h-6 w-6 rounded-full border-[#333] border-2"
+                />
+                <img
+                  src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                  className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-10px] "
+                />{" "}
+                <img
+                  src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                  className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-20px] "
+                />{" "}
+              </div>
             </div>
           </div>
         </div>
@@ -64,6 +81,23 @@ function Testimonials() {
                 <i class="bx bx-star text-yellow-500"></i>
               </div>
             </div>
+            <div className="m-2 flex">
+              <img
+                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2"
+              />
+              <img
+                src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-10px] "
+              />{" "}
+              <img
+                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-20px] "
+              />{" "}
+            </div>
           </div>
         </div>
         <div className=" ">
@@ -92,6 +126,23 @@ function Testimonials() {
                 <i class="bx bxs-star text-yellow-500"></i>
                 <i class="bx bxs-star text-yellow-500"></i>
               </div>
+            </div>
+            <div className="m-2 flex">
+              <img
+                src="https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2"
+              />
+              <img
+                src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-10px] "
+              />{" "}
+              <img
+                src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+                className="h-6 w-6 rounded-full border-[#333] border-2 translate-x-[-20px] "
+              />{" "}
             </div>
           </div>
         </div>
