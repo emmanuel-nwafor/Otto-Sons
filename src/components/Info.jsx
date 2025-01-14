@@ -3,6 +3,7 @@ import React from "react";
 function Info() {
   return (
     <>
+      <div id="services"></div>
       <div>
         <div className=" text-gray-300 p-3  ">
           <h1 className=" text-3xl p-4 ">Explore</h1>
