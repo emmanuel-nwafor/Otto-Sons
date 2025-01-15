@@ -101,7 +101,7 @@ const ContactPage = () => {
           {/* Live Map */}
           <div
             className=" z-0 relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[530px] rounded-lg 
-        shadow-lg overflow-hidden "
+               shadow-lg overflow-hidden "
           >
             <MapContainer center={position} zoom={14} className="h-full w-full">
               <TileLayer

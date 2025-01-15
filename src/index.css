@@ -15,3 +15,22 @@ body {
 .leaflet {
   z-index: 1;
 }
+
+/* Add to your styles.css or index.css */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease;
+}

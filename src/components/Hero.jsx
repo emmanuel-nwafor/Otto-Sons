@@ -53,7 +53,6 @@ function Hero() {
                   1000+ staisfied customers
                 </p>
                 <button
-                  onClick={alert("Please Signup First")}
                   className=" text-white p-3 pl-5 pr-5 rounded bg-zinc-600
                hover:bg-zinc-800 transition-all hover:text-white mt-3 "
                 >
