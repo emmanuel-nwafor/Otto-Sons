@@ -16,7 +16,6 @@ body {
   z-index: 1;
 }
 
-/* Add to your styles.css or index.css */
 .fade-enter {
   opacity: 0;
 }

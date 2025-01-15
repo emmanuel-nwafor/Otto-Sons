@@ -1,29 +1,22 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import Login from "./pages/Login";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomeRendering from "./components/HomeRendering";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/DashboardPage"; // Example for another route
+import Login from "./pages/Login";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
-  const location = useLocation();
-
   return (
     <Router>
-      <TransitionGroup>
-        <CSSTransition key={location.key} timeout={500} classNames="fade">
-          <Routes location={location}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
-        </CSSTransition>
-      </TransitionGroup>
+      <Routes>
+        {/* Home Route */}
+        <Route path="/" element={<HomeRendering />} />
+
+        {/* Authentication Routes */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboardpage" element={<DashboardPage />} />
+      </Routes>
     </Router>
   );
 }

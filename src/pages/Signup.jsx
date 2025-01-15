@@ -3,16 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion"; // Import framer-motion
+import { BiCheck } from "react-icons/bi"; // Importing Boxicons check icon
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(true); // Track password match
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setPasswordMatch(false); // Show error if passwords do not match
+      return;
+    }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       setSuccess(true);
@@ -26,22 +34,31 @@ function Signup() {
 
   return (
     <>
-      <div className="flex h-screen">
-        {/* Left Section with Image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 h-full "></div>
+      <motion.div
+        className="flex h-screen"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 h-full"></div>
 
-        <div className="hidden items-center justify-center md:flex w-1/2 bg-cover bg-center bg-[url('/src/assets/image1.jpg')]">
+        <div className="hidden items-center justify-center md:flex w-1/2 bg-cover bg-center bg-[url('https://images.pexels.com/photos/3399938/pexels-photo-3399938.jpeg?auto=compress&cs=tinysrgb&w=600')]">
           <div className="m-20">
             <h1 className="text-[50px] text-white">Otto-Sons</h1>
             <h2 className="text-[30px] text-gray-400">
-              Where Quality Meet Needs..
+              Where Quality Meets Needs..
             </h2>
           </div>
         </div>
 
         {/* Right Section with Form */}
         <div className="w-full md:w-1/2 bg-gray-900 z-50 flex items-center justify-center">
-          <div className="w-full max-w-md px-8">
+          <motion.div
+            className="w-full max-w-md px-8"
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl font-bold text-white mb-6">Sign Up</h2>
             <form onSubmit={handleSignup} className="space-y-6">
               <div>
@@ -78,6 +95,43 @@ function Signup() {
                   required
                 />
               </div>
+
+              <div>
+                <label
+                  htmlFor="confirmPassword"
+                  className={`block text-sm font-medium ${
+                    !passwordMatch ? "text-red-500" : "text-gray-300"
+                  }`}
+                >
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                    if (e.target.value === password) {
+                      setPasswordMatch(true);
+                    } else {
+                      setPasswordMatch(false);
+                    }
+                  }}
+                  className={`w-full p-3 rounded-md ${
+                    passwordMatch
+                      ? "bg-gray-800 text-white focus:ring-2 focus:ring-blue-500"
+                      : "bg-red-800 text-white border-red-500"
+                  }`}
+                  required
+                />
+                {!passwordMatch && (
+                  <p className="text-red-500 text-sm">
+                    Passwords do not match!
+                  </p>
+                )}
+              </div>
+
               {error && <p className="text-red-500 text-sm">{error}</p>}
               <button
                 type="submit"
@@ -95,9 +149,9 @@ function Signup() {
                 Login here
               </span>
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
       <Footer />
     </>
   );
