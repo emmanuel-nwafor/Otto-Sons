@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-
+import React from "react";
+import { useStats } from "../StatsContext";
+import { Link } from "react-router-dom";
 
 function PendingRepairsPage() {
+  const stats = useStats();
+
   return (
-    <>
-      <div className="min-h-screen bg-gray-900 text-white p-6">
-      <h1 className="text-4xl font-bold mb-6">Pending repairs</h1>
+    <div className="min-h-screen bg-gray-900 text-white p-6">
+      <h1 className="text-4xl font-bold mb-6">Pending Repairs</h1>
       <p className="text-lg">
-        This page provides details about the pending repairs. 
-        Add filters, sorting, or data visualization here.
+        Number of Cars in the Inventory: {stats.pendingRepairs}
       </p>
       <Link
         to="/dashboardPage"
@@ -17,9 +17,8 @@ function PendingRepairsPage() {
       >
         Back to Dashboard
       </Link>
-      </div>
-   </>
-  )
+    </div>
+  );
 }
 
-export default PendingRepairsPage
+export default PendingRepairsPage;

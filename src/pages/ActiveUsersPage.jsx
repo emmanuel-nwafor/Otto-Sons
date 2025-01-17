@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-
+import React from "react";
+import { useStats } from "../StatsContext";
+import { Link } from "react-router-dom";
 
 function ActiveUsersPage() {
+  const stats = useStats();
+
   return (
-    <>
     <div className="min-h-screen bg-gray-900 text-white p-6">
-      <h1 className="text-4xl font-bold mb-6">Active Users</h1>
+      <h1 className="text-4xl font-bold mb-6">Total Cars</h1>
       <p className="text-lg">
-        This page provides details about the cras rented in the inventory. 
-        Add filters, sorting, or data visualization here.
+        Number of Cars in the Inventory: {stats.activeUsers}
       </p>
       <Link
         to="/dashboardPage"
@@ -18,8 +18,7 @@ function ActiveUsersPage() {
         Back to Dashboard
       </Link>
     </div>
-   </>
-  )
+  );
 }
 
-export default ActiveUsersPage
+export default ActiveUsersPage;

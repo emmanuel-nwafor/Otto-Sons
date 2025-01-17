@@ -5,7 +5,7 @@ import HomeRendering from "./components/HomeRendering";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import DashboardPage from "./pages/DashboardPage";
-import PrivateRoute from "./components/PrivateRoute"; 
+import PrivateRoute from "./components/PrivateRoute";
 import Error from "./pages/Error";
 import TotalCarsPage from "./pages/TotalCarsPage";
 import CarsRentedPage from "./pages/CarsRentedPage";
@@ -22,19 +22,19 @@ function App() {
 
           {/* Authentication Routes */}
           <Route path="/signup" element={<Signup />} />
-          
-          {/* UNCOMMENT THIS ROUTE WHEN DONE */}
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Error />} />
 
           {/* Individual Stat Pages */}
           <Route path="/dashboard/total-cars" element={<TotalCarsPage />} />
           <Route path="/dashboard/cars-rented" element={<CarsRentedPage />} />
-          <Route path="/dashboard/pending-repairs" element={<PendingRepairsPage />} />
+          <Route
+            path="/dashboard/pending-repairs"
+            element={<PendingRepairsPage />}
+          />
           <Route path="/dashboard/active-users" element={<ActiveUsersPage />} />
 
           {/* Protected Dashboard Route */}
-
           <Route
             path="/dashboardpage"
             element={
@@ -45,8 +45,7 @@ function App() {
           />
         </Routes>
       </Router>
-   </StatsProvider>
-
+    </StatsProvider>
   );
 }
 

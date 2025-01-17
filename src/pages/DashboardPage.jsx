@@ -1,38 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useStats } from "../StatsContext";
 
 function DashboardPage() {
-  const [stats, setStats] = useState({
-    totalCars: 50,
-    carsRented: 25,
-    pendingRepairs: 10,
-    activeUsers: 100,
-  });
-
-  useEffect(() => {
-    // Simulate data fetching
-    const fetchData = async () => {
-      // Replace with real API calls if needed
-      const data = {
-        totalCars: Math.floor(Math.random() * 230),
-        carsRented: Math.floor(Math.random() * 100),
-        pendingRepairs: Math.floor(Math.random() * 150),
-        activeUsers: Math.floor(Math.random() * 200),
-      };
-      setStats(data);
-    };
-
-    fetchData();
-  }, []);
+  const { stats } = useStats();
 
   return (
-    <motion.div
-      className="min-h-screen bg-gray-900 text-white p-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="min-h-screen bg-gray-900 text-white p-6">
       <h1 className="text-4xl font-bold mb-6">Otto-Sons Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
@@ -56,29 +30,7 @@ function DashboardPage() {
           link="/dashboard/active-users"
         />
       </div>
-
-      {/* Recent Activities */}
-      <section className="p-1 mt-3">
-        <h2 className="text-2xl font-bold mb-4">Recent Activities</h2>
-        <div className="bg-gray-800 p-4 rounded shadow-md">
-          <ul className="space-y-3">
-            <li className="flex justify-between border-b border-gray-700 pb-2">
-              <span>User John rented a Toyota Corolla</span>
-              <span className="text-gray-400">2 hours ago</span>
-            </li>
-            <li className="flex justify-between border-b border-gray-700 pb-2">
-              <span>Car Honda Accord returned from repair</span>
-              <span className="text-gray-400">5 hours ago</span>
-            </li>
-            <li className="flex justify-between border-b border-gray-700 pb-2">
-              <span>User Emily scheduled a repair for Audi A6</span>
-              <span className="text-gray-400">1 day ago</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-    </motion.div>
+    </div>
   );
 }
 

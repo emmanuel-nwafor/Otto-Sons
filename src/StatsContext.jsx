@@ -4,34 +4,61 @@ const StatsContext = createContext();
 
 export const StatsProvider = ({ children }) => {
   const [stats, setStats] = useState({
-    totalCars: 0,
-    carsRented: 0,
-    pendingRepairs: 0,
-    activeUsers: 0,
+    totalCars: 3,
+    cars: [
+      {
+        id: 1,
+        name: "Toyota Corolla",
+        image: "/images/toyota-corolla.jpg",
+        description: "Reliable sedan for everyday use.",
+      },
+      {
+        id: 2,
+        name: "Honda Civic",
+        image: "/images/honda-civic.jpg",
+        description: "Sporty car with great fuel efficiency.",
+      },
+      {
+        id: 3,
+        name: "Ford Mustang",
+        image: "/images/ford-mustang.jpg",
+        description: "Powerful and stylish muscle car.",
+      },
+    ],
   });
 
   useEffect(() => {
-    // Simulate fetching data
-    const fetchData = () => {
-      const data = {
-        totalCars: Math.floor(Math.random() * 230),
-        carsRented: Math.floor(Math.random() * 100),
-        pendingRepairs: Math.floor(Math.random() * 150),
-        activeUsers: Math.floor(Math.random() * 200),
-      };
-      setStats(data);
-    };
+    const interval = setInterval(() => {
+      setStats((prevStats) => {
+        const isAdding = Math.random() > 0.5; // Randomly decide to add or remove a car
+        let updatedCars = [...prevStats.cars];
 
-    fetchData();
-  }, []); // Fetch data on component mount
+        if (isAdding) {
+          const newCar = {
+            id: prevStats.cars.length + 1,
+            name: `New Car ${prevStats.cars.length + 1}`,
+            image: "/images/new-car.jpg",
+            description: "This is a dynamically added car.",
+          };
+          updatedCars.push(newCar);
+        } else if (updatedCars.length > 1) {
+          updatedCars.pop(); // Remove the last car if we are reducing
+        }
+
+        return {
+          ...prevStats,
+          totalCars: updatedCars.length,
+          cars: updatedCars,
+        };
+      });
+    }, 5000); // Adjust the interval time (5 seconds in this case)
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, []);
 
   return (
-    <StatsContext.Provider value={stats}>
-      {children}
-    </StatsContext.Provider>
+    <StatsContext.Provider value={{ stats }}>{children}</StatsContext.Provider>
   );
 };
 
-export const useStats = () => {
-  return useContext(StatsContext);
-};
+export const useStats = () => useContext(StatsContext);

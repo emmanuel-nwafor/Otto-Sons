@@ -14,12 +14,13 @@ function DashboardReplicate() {
   ];
 
   return (
-        <button
-          onClick={() => navigate("/login")}
-          className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
-        >
-          Logout
-        </button>
+    <>
+      <button
+        onClick={() => navigate("/login")}
+        className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
+      >
+        Logout
+      </button>
 
       {/* Stats Section */}
       <motion.div
@@ -95,6 +96,7 @@ function DashboardReplicate() {
       <footer className="bg-gray-800 text-center p-4 mt-8">
         <p>Otto-Sons &copy; 2025. All Rights Reserved.</p>
       </footer>
+    </>
   );
 }
 
