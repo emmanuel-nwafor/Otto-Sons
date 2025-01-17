@@ -47,7 +47,7 @@ function Login() {
           <div className="m-20">
             <h1 className="text-[50px] text-white">Otto-Sons</h1>
             <h2 className="text-[30px] text-gray-400">
-              Where Quality Meets Needs..
+              Where Quality Meet Needs..
             </h2>
           </div>
         </div>
@@ -126,7 +126,7 @@ function Login() {
             animate={{ scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-lg font-semibold text-center text-greebluen-600">
+            <h3 className="text-lg font-semibold text-center text-blue-600">
               Login Successful!
             </h3>
           </motion.div>

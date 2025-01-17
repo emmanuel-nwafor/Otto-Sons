@@ -3,7 +3,7 @@ import React from "react";
 function Testimonials() {
   return (
     <>
-      <h1 className=" text-3xl p-4 m-2 text-gray-300 ">Testimonials</h1>
+      <h1 className=" text-3xl p-4 m-2 text-gray-300 font-bold ">Testimonials</h1>
 
       <div className="flex max-md:flex-col">
         <div className=" ">
@@ -14,12 +14,12 @@ function Testimonials() {
                 className=" h-[40px] w-[40px] rounded-full "
                 alt="img"
               />
-              <h1 className=" text-2xl m-2 text-gray-300 ">Nicolas John</h1>
+              <h1 className=" text-2xl m-2 text-gray-300 font-bold ">Nicolas John</h1>
             </div>
 
             <div>
               <i class="bx bxs-quote-alt-left text-4xl text-gray-500"></i>
-              <p className="m-2 text-sm text-gray-400">
+              <p className="m-2 text-[17px] text-gray-400 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 quos perspiciatis ducimus qui omnis excepturi et quasi
                 dignissimos quis recusandae, labore tempora similique debitis
@@ -60,14 +60,14 @@ function Testimonials() {
                 className=" h-[40px] w-[40px] rounded-full "
                 alt="img"
               />
-              <h1 className=" text-2xl m-2 text-gray-300 ">
+              <h1 className=" text-2xl m-2 text-gray-300 font-bold ">
                 Cassandra Natalie
               </h1>
             </div>
 
             <div>
               <i class="bx bxs-quote-alt-left text-4xl text-gray-500"></i>
-              <p className="m-2 text-sm text-gray-400">
+              <p className="m-2 text-[17px] text-gray-400 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 quos perspiciatis ducimus qui omnis excepturi et quasi
                 dignissimos quis recusandae, labore tempora similique debitis
@@ -108,12 +108,12 @@ function Testimonials() {
                 className=" h-[40px] w-[40px] rounded-full "
                 alt="img"
               />
-              <h1 className=" text-2xl m-2 text-gray-300 ">John Newman</h1>
+              <h1 className=" text-2xl m-2 text-gray-300 font-bold ">John Newman</h1>
             </div>
 
             <div className="">
               <i class="bx bxs-quote-alt-left text-4xl text-gray-500"></i>
-              <p className="m-2 text-sm text-gray-400">
+              <p className="m-2 text-[17px] text-gray-400 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 quos perspiciatis ducimus qui omnis excepturi et quasi
                 dignissimos quis recusandae, labore tempora similique debitis

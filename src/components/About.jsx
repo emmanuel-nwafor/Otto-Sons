@@ -24,7 +24,7 @@ export default function About() {
             <h1 className=" text-white sm:text-[30px] md:text-[32px] lg:text-[50px] xl:text-[50px] max-md:text-[30px] font-extrabold ">
               Who we are
             </h1>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-[17px] ">
               Welcome to Otto-Sons, your trusted partner for all car renting and
               repairing since 1999. <br className=" max-md:hidden " /> For over
               two decades, we have been dedicated to simplifying vehicle

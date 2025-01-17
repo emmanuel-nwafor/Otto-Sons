@@ -6,15 +6,15 @@ function Info() {
       <div id="services"></div>
       <div>
         <div className=" text-gray-300 p-3  ">
-          <h1 className=" text-3xl p-4 ">Explore</h1>
+          <h1 className=" text-3xl p-4 font-bold ">Explore</h1>
           <div className="flex items-center justify-evenly max-md:flex-col">
             <div className=" flex-col p-12 items-center justify-center bg-[#333] m-4 rounded-xl ">
-              <i class="bx bx-edit-alt text-3xl"></i>
+              <i class="bx bx-edit-alt text-3xl "></i>
               <br />
               <br />
               <div>
-                <h1 className=" text-2xl ">Renting</h1>
-                <p>
+                <h1 className=" text-2xl font-bold ">Renting</h1>
+                <p className="text-[17px] ">
                   Experience the ease of renting with our trusted service.
                   Whether it’s for a quick trip or a long-term need, we provide
                   affordable and reliable options tailored to suit you. With
@@ -28,8 +28,8 @@ function Info() {
               <br />
               <br />
               <div>
-                <h1 className=" text-2xl ">Maintaining and Repairing</h1>
-                <p>
+                <h1 className=" text-2xl font-bold ">Maintaining and Repairing</h1>
+                <p className="text-[17px] ">
                   Keep your car in top shape with our trusted repair and
                   maintenance services. From routine checkups to complex fixes,
                   we offer reliable, affordable solutions tailored to your
@@ -43,8 +43,8 @@ function Info() {
               <br />
               <br />
               <div>
-                <h1 className=" text-2xl ">Buying And Selling</h1>
-                <p>
+                <h1 className=" text-2xl font-bold ">Buying And Selling</h1>
+                <p className="text-[17px] ">
                   Experience the simplicity of buying or selling your car with
                   us. Whether you’re searching for your next ride or ready to
                   sell, we provide transparent, hassle-free solutions. With fair

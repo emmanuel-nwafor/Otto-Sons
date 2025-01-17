@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Bebas Neue", "sans-serif"],
+        sans: ["Smooch Sans", "serif"],
       },
       animation: {
         scroll: "scroll 15s linear infinite",

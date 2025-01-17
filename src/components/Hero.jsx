@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
   return (
@@ -14,10 +15,10 @@ function Hero() {
           <div className=" h-[100vh] sm:h-[140vh] md:h-[140vh] lg:h-[120vh] flex items-center ">
             <div className="flex-col  m-8">
               {" "}
-              <h1 className=" text-white lg:text-[50px] max-md:text-[30px] font-extrabold ">
+              <h1 className=" text-white lg:text-[60px] max-md:text-[40px] font-extrabold ">
                 #1 Car Agency
               </h1>
-              <p className=" text-white ">
+              <p className=" text-white text-[18px] ">
                 Looking for reliable car rental or expert car repairs?{" "}
                 <br className=" max-md:hidden " /> At Otto-Sons, we offer a wide
                 range of vehicles for rent, <br className=" max-md:hidden " />{" "}
@@ -49,14 +50,14 @@ function Hero() {
                     alt="img"
                   />
                 </div>
-                <p className="text-white text-[10px] ">
+                <p className="text-white text-[17px] ">
                   1000+ staisfied customers
                 </p>
                 <button
                   className=" text-white p-3 pl-5 pr-5 rounded bg-zinc-600
                hover:bg-zinc-800 transition-all hover:text-white mt-3 "
                 >
-                  Dashboard
+                  Signup
                 </button>
               </div>
               {/* <br /> */}

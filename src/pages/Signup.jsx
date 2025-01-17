@@ -4,7 +4,6 @@ import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion"; // Import framer-motion
-import { BiCheck } from "react-icons/bi"; // Importing Boxicons check icon
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -96,7 +95,7 @@ function Signup() {
                 />
               </div>
 
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="confirmPassword"
                   className={`block text-sm font-medium ${
@@ -121,12 +120,16 @@ function Signup() {
                   className={`w-full p-3 rounded-md ${
                     passwordMatch
                       ? "bg-gray-800 text-white focus:ring-2 focus:ring-blue-500"
-                      : "bg-red-800 text-white border-red-500"
+                      : "bg-gray-800 text-white border-red-500 border-2 outline-none"
                   }`}
                   required
                 />
+                {/* Checkmark Icon Inside Input */}
+                {passwordMatch && (
+                  <i className="bx bx-check-circle absolute right-3 mt-2 top-1/2 transform -translate-y-1/2 text-green-500 text-xl"></i>
+                )}
                 {!passwordMatch && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-sm mt-3">
                     Passwords do not match!
                   </p>
                 )}

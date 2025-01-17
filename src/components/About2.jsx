@@ -11,41 +11,41 @@ function About2() {
               We Offer a Complete{" "}
               <span className="text-red-500">Diagonistic</span> for Your Car
             </h1>
-            <p className=" text-gray-300 ">
+            <p className=" text-gray-300 font-semibold text-[20px] ">
               For your car we would do everything for the repairing and
-              maintaining of your vehicle, and also for renting
+              maintaining of your vehicle.
             </p>
             <br />
             <div className=" flex-col ">
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">
+                <p className=" m-1 text-gray-300 text-[17px] ">
                   We have 24 Hour Emergency Hotline
                 </p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">
+                <p className=" m-1 text-gray-300 text-[17px] ">
                   Mobile Diagnsotic Service at Home or Office
                 </p>
               </div>{" "}
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">
+                <p className=" m-1 text-gray-300 text-[17px] ">
                   Manage Your CAr Online 24/7
                 </p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">Car Maintenance Reminders</p>
+                <p className=" m-1 text-gray-300 text-[17px] ">Car Maintenance Reminders</p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">24/7 Roadside Assistance</p>
+                <p className=" m-1 text-gray-300 text-[17px] ">24/7 Roadside Assistance</p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 ">
+                <p className=" m-1 text-gray-300 text-[17px] ">
                   Customer Reviews and Ratings
                 </p>
               </div>
