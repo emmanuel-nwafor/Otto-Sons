@@ -13,6 +13,7 @@ import PendingRepairsPage from "./pages/PendingRepairsPage";
 import ActiveUsersPage from "./pages/ActiveUsersPage";
 import BookingsPage from "./components/BookingsPage";
 import BookingForm from "./components/BookingForm";
+import AvailableCarsPage from "./pages/AvailableCarsPage";
 
 function App() {
   return (
@@ -37,6 +38,11 @@ function App() {
           <Route path="/book/:carId" component={BookingForm} />
           <Route path="/bookings" component={BookingsPage} />
           <Route path="/dashboard/active-users" element={<ActiveUsersPage />} />
+          {/* Available Cars Route */}
+          <Route
+            path="/available-cars"
+            element={<AvailableCarsPage cars={carsData} />}
+          />
 
           {/* Protected Dashboard Route */}
           <Route
