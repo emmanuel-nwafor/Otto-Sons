@@ -26,7 +26,7 @@ function Login() {
   useEffect(() => {
     if (isPopupVisible) {
       const timer = setTimeout(() => {
-        navigate("/dashboardPage");
+        navigate("/dashboardPage"); // Navigate to dashboard after a short delay
       }, 1000);
 
       return () => clearTimeout(timer); // Cleanup the timeout when the component unmounts

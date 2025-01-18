@@ -8,8 +8,8 @@ import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Error from "./pages/Error";
 import Header from "./components/Header"; // New Component
-import FilterSidebar from "/src/components/FilterSidebar"; // New Component
 import VehicleList from "./components/VehicleList"; // New Component
+import VehicleOverview from "./pages/VehicleOverview";
 
 function App() {
   return (
@@ -30,7 +30,6 @@ function App() {
               <PrivateRoute>
                 <Header />
                 <div className="bg-gray-900 min-h-screen flex text-white">
-                  <FilterSidebar />
                   <main className="flex">
                     <VehicleList />
                   </main>
@@ -38,6 +37,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/vehicles/:id" element={<VehicleOverview />} />
         </Routes>
       </Router>
     </StatsProvider>
