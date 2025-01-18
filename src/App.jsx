@@ -11,6 +11,8 @@ import TotalCarsPage from "./pages/TotalCarsPage";
 import CarsRentedPage from "./pages/CarsRentedPage";
 import PendingRepairsPage from "./pages/PendingRepairsPage";
 import ActiveUsersPage from "./pages/ActiveUsersPage";
+import BookingsPage from "./components/BookingsPage";
+import BookingForm from "./components/BookingForm";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             path="/dashboard/pending-repairs"
             element={<PendingRepairsPage />}
           />
+          <Route path="/book/:carId" component={BookingForm} />
+          <Route path="/bookings" component={BookingsPage} />
           <Route path="/dashboard/active-users" element={<ActiveUsersPage />} />
 
           {/* Protected Dashboard Route */}

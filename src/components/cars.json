@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "Car 1",
+    "description": "Description for Car 1",
+    "image": "car1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Car 2",
+    "description": "Description for Car 2",
+    "image": "car2.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Car 3",
+    "description": "Description for Car 3",
+    "image": "car3.jpg"
+  }
+]
