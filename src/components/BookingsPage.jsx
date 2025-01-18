@@ -1,36 +1,37 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-function BookingPage() {
-  const { id } = useParams(); // Get car ID from URL
-  const [car, setCar] = React.useState(null);
+function BookingsPage() {
+  const [bookings, setBookings] = useState([]);
 
-  React.useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        const response = await fetch("/cars.json");
-        const data = await response.json();
-        const selectedCar = data.find((car) => car.id === id);
-        setCar(selectedCar); // Set selected car details
-      } catch (error) {
-        console.error("Error fetching car data: ", error);
-      }
+  useEffect(() => {
+    const fetchBookings = async () => {
+      const response = await fetch("/bookings.json"); // Or your backend endpoint
+      const data = await response.json();
+      setBookings(data);
     };
 
-    fetchCar();
-  }, [id]);
-
-  if (!car) {
-    return <p>Loading car details...</p>;
-  }
+    fetchBookings();
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
-      <h2 className="text-3xl font-bold mb-4">Book {car.name}</h2>
-      <p>{car.description}</p>
-      {/* You can add the booking form here */}
+    <div>
+      <h2>Your Bookings</h2>
+      {bookings.length === 0 ? (
+        <p>No bookings found.</p>
+      ) : (
+        bookings.map((booking) => (
+          <div key={booking.id}>
+            <p>Car: {booking.carId}</p>
+            <p>Booked Date: {booking.bookedDate}</p>
+            <p>Duration: {booking.duration} days</p>
+            <p>Status: {booking.status}</p>
+          </div>
+        ))
+      )}
+      <Link to="/">Back to Home</Link>
     </div>
   );
 }
 
-export default BookingPage;
+export default BookingsPage;
