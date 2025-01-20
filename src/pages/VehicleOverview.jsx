@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import vehicles from "/src/components/vehicleData";
 import SimilarVehicles from "/src/components/SimilarVehicles";
+import BookingModal from "/src/components/BookingModal"; // Import the Booking Modal component
 
 const VehicleOverview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const vehicle = vehicles.find((v) => v.id === parseInt(id));
+
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
 
   if (!vehicle) {
     return (
@@ -22,6 +25,12 @@ const VehicleOverview = () => {
     );
   }
 
+  // Function to open the modal
+  const openModal = () => setIsModalOpen(true);
+
+  // Function to close the modal
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-4xl mx-auto">
@@ -34,7 +43,7 @@ const VehicleOverview = () => {
         </button>
 
         {/* Vehicle Details */}
-        <div className=" rounded-lg p-3 ">
+        <div className="rounded-lg p-3">
           <div className="flex flex-col md:flex-row items-center">
             {/* Vehicle Image */}
             <img
@@ -62,6 +71,14 @@ const VehicleOverview = () => {
               </p>
             </div>
           </div>
+
+          {/* Book Now Button */}
+          <button
+            onClick={openModal}
+            className="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          >
+            Book Now
+          </button>
         </div>
 
         {/* Similar Vehicles Section */}
@@ -70,6 +87,14 @@ const VehicleOverview = () => {
           currentVehicleType={vehicle.type}
         />
       </div>
+
+      {/* Booking Modal */}
+      {isModalOpen && (
+        <BookingModal
+          vehicle={vehicle}
+          onClose={closeModal} // Pass the close function to the modal
+        />
+      )}
     </div>
   );
 };

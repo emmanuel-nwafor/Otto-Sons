@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Hero() {
   return (
     <>
       <NavBar />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30 h-[100vh] sm:h-[140vh] md:h-[140vh] lg:h-[120vh] "></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30 h-[100vh] sm:h-[140vh] md:h-[140vh] lg:h-[120vh] "></div> */}
 
       <div className="  bg-[url('/src/assets/img5.jpg')] bg-cover bg-center  ">
         <div className="  flex-col max-md:flex-col justify-evenly max-md:justify-center ">
@@ -54,8 +54,8 @@ function Hero() {
                   1000+ staisfied customers
                 </p>
                 <button
-                  className=" text-white p-3 pl-5 pr-5 rounded bg-zinc-600
-               hover:bg-zinc-800 transition-all hover:text-white mt-3 "
+                  className=" text-white p-3 pl-10 pr-10 rounded bg-zinc-600
+               hover:bg-zinc-800 transition-all hover:cursor-not-allowed mt-3 z-10 "
                 >
                   Signup
                 </button>

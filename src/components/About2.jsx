@@ -32,16 +32,20 @@ function About2() {
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
                 <p className=" m-1 text-gray-300 text-[17px] ">
-                  Manage Your CAr Online 24/7
+                  Manage Your Car Online 24/7
                 </p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 text-[17px] ">Car Maintenance Reminders</p>
+                <p className=" m-1 text-gray-300 text-[17px] ">
+                  Car Maintenance Reminders
+                </p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
-                <p className=" m-1 text-gray-300 text-[17px] ">24/7 Roadside Assistance</p>
+                <p className=" m-1 text-gray-300 text-[17px] ">
+                  24/7 Roadside Assistance
+                </p>
               </div>
               <div className=" flex items-center ">
                 <i class="bx bx-check-circle text-3xl text-red-500 m-1"></i>
