@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import vehicles from "/src/components/vehicleData";
 
 const VehicleList = () => {
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem("user"); // Adjust this if you're storing a different key for the user
+    // Redirect to the login page
+    navigate("/login");
+  };
   const [selectedType, setSelectedType] = useState("");
   const [maxPrice, setMaxPrice] = useState(200);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar toggle state
@@ -44,6 +50,15 @@ const VehicleList = () => {
             <option value="Manual">Manual</option>
           </select>
         </div>
+
+        <button
+          onClick={handleLogout} // Call logout function
+          className="bg-red-700 hover:bg-red-600 transition-all text-white py-2 px-4 lg:px-1 rounded"
+        >
+          Log out
+        </button>
+        <br />
+        <br />
 
         {/* Price Filter */}
         <div className="mb-4">
