@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import vehicles from "/src/components/vehicleData";
 import SimilarVehicles from "/src/components/SimilarVehicles";
-import BookingModal from "/src/components/BookingModal"; // Import the Booking Modal component
+import BookingModal from "/src/components/BookingModal";
 
 const VehicleOverview = () => {
   const { id } = useParams();
@@ -41,7 +41,7 @@ const VehicleOverview = () => {
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         <button
-          onClick={() => navigate("/vehicles")} // Navigate back to vehicle list
+          onClick={() => navigate("/vehicles")}
           className="text-blue-500 underline mb-4 block"
         >
           &larr; Back to Vehicles
@@ -94,6 +94,16 @@ const VehicleOverview = () => {
             >
               Purchase Vehicle
             </button>
+          </div>
+
+          {/* Link to Video Walkthrough */}
+          <div className="mt-4">
+            <Link
+              to={`/video-walkthrough/${vehicle.id}`} // Link to the Video Walkthrough page
+              className="text-blue-500 underline"
+            >
+              Watch Video Walkthrough
+            </Link>
           </div>
         </div>
 

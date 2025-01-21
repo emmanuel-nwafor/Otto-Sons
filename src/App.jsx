@@ -12,6 +12,7 @@ import VehicleList from "./components/VehicleList";
 import VehicleOverview from "./pages/VehicleOverview";
 import ManageBookings from "./pages/ManageBookings";
 import BookingHistory from "./pages/BookingHistory";
+import VideoWalkthrough from "./pages/VideoWalkthrough";
 
 function App() {
   return (
@@ -22,12 +23,10 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomeRendering />} />
-
             {/* Authentication Routes */}
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Error />} />
-
             {/* Protected Dashboard Route */}
             <Route
               path="/dashboardpage"
@@ -42,10 +41,8 @@ function App() {
                 </PrivateRoute>
               }
             />
-
             {/* Vehicle Overview Route */}
             <Route path="/vehicles/:id" element={<VehicleOverview />} />
-
             {/* Manage Bookings Route */}
             <Route
               path="/manage-bookings"
@@ -66,6 +63,17 @@ function App() {
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
                     <BookingHistory />{" "}
+                  </div>
+                </PrivateRoute>
+              }
+            />{" "}
+            {/*Video walk through Route */}
+            <Route
+              path="/video-walkthrough/:id"
+              element={
+                <PrivateRoute>
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <VideoWalkthrough />{" "}
                   </div>
                 </PrivateRoute>
               }
