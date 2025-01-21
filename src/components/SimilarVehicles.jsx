@@ -17,27 +17,31 @@ const SimilarVehicles = ({ currentVehicleId, currentVehicleType }) => {
       {similarVehicles.length === 0 ? (
         <p>No similar vehicles found.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {similarVehicles.map((vehicle) => (
-            <div
-              key={vehicle.id}
-              className="bg-gray-800 rounded-lg p-5 flex-col cursor-pointer hover:shadow-lg"
-              onClick={() => navigate(`/vehicles/${vehicle.id}`)} // Navigate to selected vehicle
-            >
-              <img
-                src={vehicle.image}
-                alt={vehicle.name}
-                className="w-full object-cover mb-4 rounded"
-              />
-              <div className="flex justify-between items-center">
-                <h3 className="font-bold text-2xl">{vehicle.name}</h3>
-                <p className="text-sm mb-2">{vehicle.price.toFixed(2)} €/day</p>
+        <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+          <div className="flex gap-6">
+            {similarVehicles.map((vehicle) => (
+              <div
+                key={vehicle.id}
+                className="bg-gray-800 rounded-lg p-5 flex-shrink-0 w-80 cursor-pointer hover:shadow-lg"
+                onClick={() => navigate(`/vehicles/${vehicle.id}`)} // Navigate to selected vehicle
+              >
+                <img
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  className="w-full object-cover mb-4 rounded"
+                />
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-xl">{vehicle.name}</h3>
+                  <p className="text-sm mb-2">
+                    {vehicle.price.toFixed(2)} €/day
+                  </p>
+                </div>
+                <span className="text-xs bg-gray-700 px-3 py-1 rounded">
+                  {vehicle.type}
+                </span>
               </div>
-              <span className="text-xs bg-gray-700 px-3 py-1 rounded">
-                {vehicle.type}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </div>

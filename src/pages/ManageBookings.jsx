@@ -59,13 +59,17 @@ const ManageBookings = () => {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-evenly items-center mb-5">
         <h1 className="text-2xl font-bold">Manage Bookings</h1>
         <button
           onClick={() => setShowCalendar((prev) => !prev)}
-          className="bg-blue-500 text-white py-2 px-4 rounded"
+          className=" text-white py-2 px-4 rounded"
         >
-          {showCalendar ? "View List" : "View Calendar"}
+          {showCalendar ? (
+            <i class="bx bxs-navigation text-[25px]"></i>
+          ) : (
+            <i class="bx bxs-calendar text-[25px]"></i>
+          )}
         </button>
       </div>
 
@@ -90,7 +94,11 @@ const ManageBookings = () => {
         // List View
         <div>
           {bookings.length === 0 ? (
-            <p>No bookings available.</p>
+            <div className="  max-md:flex-col flex items-center justify-center ">
+              <p className=" text-white text-[180px] ">No</p>
+
+              <p className=" text-white ">Bookings Available </p>
+            </div>
           ) : (
             bookings.map((booking) => (
               <div
@@ -101,44 +109,44 @@ const ManageBookings = () => {
                   // Editing Mode
                   <div>
                     <h2 className="text-lg font-bold mb-2">Edit Booking</h2>
-                    <label className="block mb-2">
+                    <label className="block mb-2 text-[17px]">
                       Full Name:
                       <input
                         type="text"
                         name="fullName"
                         value={editedBooking.fullName}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border rounded"
+                        className="w-full mt-1 p-4  rounded bg-zinc-700"
                       />
                     </label>
-                    <label className="block mb-2">
+                    <label className="block mb-2 text-[17px]">
                       Pick-Up Date:
                       <input
                         type="date"
                         name="pickUpDate"
                         value={editedBooking.pickUpDate}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border rounded"
+                        className="w-full mt-1 p-4  rounded bg-zinc-700"
                       />
                     </label>
-                    <label className="block mb-2">
+                    <label className="block mb-2 text-[17px]">
                       Drop-Off Date:
                       <input
                         type="date"
                         name="dropOffDate"
                         value={editedBooking.dropOffDate}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border rounded"
+                        className="w-full mt-1 p-4  rounded bg-zinc-700"
                       />
                     </label>
-                    <label className="block mb-2">
+                    <label className="block mb-2 text-[17px]">
                       Total Price:
                       <input
                         type="number"
                         name="totalPrice"
                         value={editedBooking.totalPrice}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border rounded"
+                        className="w-full mt-1 p-4  rounded bg-zinc-700"
                       />
                     </label>
                     <button
@@ -156,11 +164,11 @@ const ManageBookings = () => {
                   </div>
                 ) : (
                   // View Mode
-                  <div className="flex items-center justify-evenly max-md:flex-col">
+                  <div className="flex items-center justify-evenly max-md:flex-col m-10">
                     <img
                       src={booking.vehicleImage}
                       alt={booking.vehicleName}
-                      className="w-40 h-40 object-cover rounded mb-4"
+                      className="w- h-40 object-cover rounded mb-4"
                     />
                     <div className="">
                       <h2 className="text-lg font-bold">
@@ -183,7 +191,7 @@ const ManageBookings = () => {
                         onClick={() => openConfirmModal(booking.id)}
                         className="bg-red-500 text-white py-2 px-4 rounded mt-4 mr-2"
                       >
-                        Delete
+                        <i class="bx bxs-trash"></i>
                       </button>
                       <button
                         onClick={() => startEditing(booking)}
@@ -204,14 +212,14 @@ const ManageBookings = () => {
       {showConfirmModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white text-black p-6 rounded-lg w-full max-w-sm">
-            <h2 className="text-lg font-bold mb-4">Confirm Deletion</h2>
+            <h2 className="text-lg font-bold mb-4">Confirm Delete</h2>
             <p>Are you sure you want to delete this booking?</p>
             <div className="flex justify-end mt-4">
               <button
                 onClick={confirmDelete}
                 className="bg-red-500 text-white py-2 px-4 rounded mr-2"
               >
-                Yes, Delete
+                Yes delete
               </button>
               <button
                 onClick={closeConfirmModal}

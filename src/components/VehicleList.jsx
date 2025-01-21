@@ -32,7 +32,7 @@ const VehicleList = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-4 z-40 transition-transform transform lg:static lg:translate-x-0 ${
+        className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-6 flex-col items-center justify-center z-40 transition-transform transform lg:static lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -53,7 +53,7 @@ const VehicleList = () => {
 
         <button
           onClick={handleLogout} // Call logout function
-          className="bg-red-700 hover:bg-red-600 transition-all text-white py-2 px-4 lg:px-1 rounded"
+          className="bg-red-700 hover:bg-red-600 transition-all text-white py-2 px-20 lg:px-1 rounded"
         >
           Log out
         </button>

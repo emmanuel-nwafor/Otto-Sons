@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import VehicleList from "./components/VehicleList";
 import VehicleOverview from "./pages/VehicleOverview";
 import ManageBookings from "./pages/ManageBookings";
+import BookingHistory from "./pages/BookingHistory";
 
 function App() {
   return (
@@ -53,6 +54,18 @@ function App() {
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
                     <ManageBookings />
+                  </div>
+                </PrivateRoute>
+              }
+            />
+            {/* Booking History Route */}
+            <Route
+              path="/booking-history"
+              element={
+                <PrivateRoute>
+                  <Header />
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <BookingHistory />{" "}
                   </div>
                 </PrivateRoute>
               }

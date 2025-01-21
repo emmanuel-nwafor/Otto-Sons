@@ -25,11 +25,16 @@ const VehicleOverview = () => {
     );
   }
 
-  // Function to open the modal
+  // Function to open the booking modal
   const openModal = () => setIsModalOpen(true);
 
-  // Function to close the modal
+  // Function to close the booking modal
   const closeModal = () => setIsModalOpen(false);
+
+  // Function to navigate to the purchase page
+  const handlePurchase = () => {
+    navigate(`/purchase/${vehicle.id}`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
@@ -72,13 +77,24 @@ const VehicleOverview = () => {
             </div>
           </div>
 
-          {/* Book Now Button */}
-          <button
-            onClick={openModal}
-            className="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          >
-            Book Now
-          </button>
+          {/* Action Buttons */}
+          <div className="flex gap-4 mt-6">
+            {/* Book Now Button */}
+            <button
+              onClick={openModal}
+              className="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
+              Book Now
+            </button>
+
+            {/* Purchase Vehicle Button */}
+            <button
+              onClick={handlePurchase}
+              className="w-full md:w-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+            >
+              Purchase Vehicle
+            </button>
+          </div>
         </div>
 
         {/* Similar Vehicles Section */}

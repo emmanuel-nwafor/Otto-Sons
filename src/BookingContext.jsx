@@ -1,55 +1,66 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Create Context for Booking Data
 const BookingContext = createContext();
 
-// Custom hook to access BookingContext
 export const useBooking = () => useContext(BookingContext);
 
-// BookingProvider to wrap around the app and provide data globally
 export const BookingProvider = ({ children }) => {
-  // Initialize state with bookings from localStorage if available
+  // State for current bookings and booking history
   const [bookings, setBookings] = useState(() => {
     const savedBookings = localStorage.getItem("bookings");
     return savedBookings ? JSON.parse(savedBookings) : [];
   });
 
-  // Function to save bookings to localStorage whenever it changes
-  const saveBookingsToLocalStorage = (updatedBookings) => {
-    localStorage.setItem("bookings", JSON.stringify(updatedBookings));
+  const [bookingHistory, setBookingHistory] = useState(() => {
+    const savedHistory = localStorage.getItem("bookingHistory");
+    return savedHistory ? JSON.parse(savedHistory) : [];
+  });
+
+  // Save to localStorage
+  const saveToLocalStorage = (key, data) => {
+    localStorage.setItem(key, JSON.stringify(data));
   };
 
   // Add a new booking
   const addBooking = (newBooking) => {
     const updatedBookings = [...bookings, newBooking];
     setBookings(updatedBookings);
-    saveBookingsToLocalStorage(updatedBookings); // Persist updated bookings
+    saveToLocalStorage("bookings", updatedBookings);
   };
 
-  // Delete a booking
-  const deleteBooking = (id) => {
+  // Delete (move to history) a booking
+  const deleteBooking = (id, status = "Canceled") => {
+    const bookingToCancel = bookings.find((booking) => booking.id === id);
+    if (!bookingToCancel) return;
+
     const updatedBookings = bookings.filter((booking) => booking.id !== id);
+
+    const updatedHistory = [
+      ...bookingHistory,
+      { ...bookingToCancel, status, actionDate: new Date().toISOString() },
+    ];
+
     setBookings(updatedBookings);
-    saveBookingsToLocalStorage(updatedBookings); // Persist updated bookings
+    setBookingHistory(updatedHistory);
+
+    saveToLocalStorage("bookings", updatedBookings);
+    saveToLocalStorage("bookingHistory", updatedHistory);
   };
 
-  // Edit an existing booking
-  const editBooking = (updatedBooking) => {
-    const updatedBookings = bookings.map((booking) =>
-      booking.id === updatedBooking.id ? updatedBooking : booking
-    );
-    setBookings(updatedBookings);
-    saveBookingsToLocalStorage(updatedBookings); // Persist updated bookings
+  // Mark a booking as completed
+  const completeBooking = (id) => {
+    deleteBooking(id, "Completed");
   };
-
-  // Use effect to update localStorage whenever bookings state changes
-  useEffect(() => {
-    saveBookingsToLocalStorage(bookings);
-  }, [bookings]);
 
   return (
     <BookingContext.Provider
-      value={{ bookings, addBooking, deleteBooking, editBooking }}
+      value={{
+        bookings,
+        bookingHistory,
+        addBooking,
+        deleteBooking,
+        completeBooking,
+      }}
     >
       {children}
     </BookingContext.Provider>
