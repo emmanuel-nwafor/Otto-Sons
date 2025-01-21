@@ -6,6 +6,7 @@ import HomeRendering from "./components/HomeRendering";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
+// import Search from "./components/Search";
 import Error from "./pages/Error";
 import Header from "./components/Header";
 import VehicleList from "./components/VehicleList";

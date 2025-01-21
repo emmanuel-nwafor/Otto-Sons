@@ -3,20 +3,21 @@ import { useNavigate } from "react-router-dom";
 import vehicles from "/src/components/vehicleData";
 
 const VehicleList = () => {
-  const handleLogout = () => {
-    // Clear user data from localStorage
-    localStorage.removeItem("user"); // Adjust this if you're storing a different key for the user
-    // Redirect to the login page
-    navigate("/login");
-  };
   const [selectedType, setSelectedType] = useState("");
   const [maxPrice, setMaxPrice] = useState(200);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar toggle state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Clear user data from localStorage
+    navigate("/login"); // Redirect to the login page
+  };
+
+  // Filter vehicles based on selected type and max price
   const filteredVehicles = vehicles.filter((vehicle) => {
     const matchesType = selectedType ? vehicle.type === selectedType : true;
     const matchesPrice = vehicle.price <= maxPrice;
+
     return matchesType && matchesPrice;
   });
 
@@ -37,6 +38,7 @@ const VehicleList = () => {
         }`}
       >
         <h2 className="text-lg font-bold mb-4">Filters</h2>
+
         {/* Transmission Filter */}
         <div className="mb-4">
           <h3 className="text-sm font-semibold mb-2">Transmission</h3>
@@ -51,8 +53,9 @@ const VehicleList = () => {
           </select>
         </div>
 
+        {/* Logout Button */}
         <button
-          onClick={handleLogout} // Call logout function
+          onClick={handleLogout}
           className="bg-red-700 hover:bg-red-600 transition-all text-white py-2 px-20 lg:px-1 rounded"
         >
           Log out

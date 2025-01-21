@@ -7,7 +7,7 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/bmw-png/bmw-reviews-and-rating-motor-trend-1.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/2229697/2229697-sd_640_360_30fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/6157909/6157909-sd_640_360_30fps.mp4", // Add your video URL here
   },
   {
     id: 2,
@@ -15,7 +15,8 @@ const vehicles = [
     price: 58.4,
     image: "https://pngimg.com/uploads/bmw/bmw_PNG1702.png",
     type: "Manual",
-    videoWalkthrough: "https://www.example.com/video/vw-t-roc.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/13643097/13643097-sd_640_360_24fps.mp4", // Add your video URL here
   },
   {
     id: 3,
@@ -24,16 +25,18 @@ const vehicles = [
     image:
       "https://www.freepnglogos.com/uploads/bmw-png/white-bmw-car-png-image-pngpix-26.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/bmw-x3.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/5911023/5911023-sd_640_360_24fps.mp4", // Add your video URL here
   },
   {
     id: 4,
-    name: "BMW 520",
+    name: "Mercedez Benz AMG",
     price: 90.0,
     image:
       "https://www.freepnglogos.com/uploads/mercedes-png/mercedes-benz-class-price-features-mercedes-benz-7.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/bmw-520.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/4095619/4095619-sd_640_360_30fps.mp4", // Add your video URL here
   },
   {
     id: 5,
@@ -42,7 +45,8 @@ const vehicles = [
     image:
       "https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-specs-price-mpg-reviews-carsm-35.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/honda-civic-gt.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/4707142/4707142-sd_640_360_24fps.mp4", // Add your video URL here
   },
   {
     id: 6,
@@ -51,7 +55,8 @@ const vehicles = [
     image:
       "https://www.freepnglogos.com/uploads/fortuner-png/toyota-fortuner-malaysia-reviews-specs-prices-6.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/toyota-fortuner.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/4101689/4101689-sd_640_360_25fps.mp4", // Add your video URL here
   },
   {
     id: 7,
@@ -60,7 +65,8 @@ const vehicles = [
     image:
       "https://www.freepnglogos.com/uploads/car-png/blue-jaguar-pace-side-view-car-png-image-pngpix-37.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/jaguar-pace.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/3066447/3066447-sd_960_506_24fps.mp4", // Add your video URL here
   },
   {
     id: 8,
@@ -69,7 +75,8 @@ const vehicles = [
     image:
       "https://www.freepnglogos.com/uploads/ferrari-png/ferrari-california-reviews-and-rating-motor-trend-23.png",
     type: "Automatic",
-    videoWalkthrough: "https://www.example.com/video/ferrari-gt6.mp4", // Add your video URL here
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
   },
 ];
 

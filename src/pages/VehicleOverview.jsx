@@ -48,7 +48,7 @@ const VehicleOverview = () => {
         </button>
 
         {/* Vehicle Details */}
-        <div className="rounded-lg p-3">
+        <div className="rounded-lg p-3 bg-gray-800">
           <div className="flex flex-col md:flex-row items-center">
             {/* Vehicle Image */}
             <img
@@ -70,40 +70,40 @@ const VehicleOverview = () => {
                   {vehicle.type}
                 </span>
               </p>
-              <p className="text-lg">
+              <p className="text-lg mb-6">
                 Description: This {vehicle.name} is the perfect choice for your
                 next trip, combining luxury, performance, and affordability.
               </p>
+              <div className="flex gap-4">
+                {/* Book Now Button */}
+                <button
+                  onClick={openModal}
+                  className="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                  role="button"
+                >
+                  Book Now
+                </button>
+
+                {/* Purchase Vehicle Button */}
+                <button
+                  onClick={handlePurchase}
+                  className="w-full md:w-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                  role="button"
+                >
+                  Purchase Vehicle
+                </button>
+              </div>
+
+              {/* Link to Video Walkthrough */}
+              <div className="mt-4">
+                <Link
+                  to={`/video-walkthrough/${vehicle.id}`} // Link to the Video Walkthrough page
+                  className="text-blue-500 underline"
+                >
+                  Watch Video Walkthrough
+                </Link>
+              </div>
             </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-4 mt-6">
-            {/* Book Now Button */}
-            <button
-              onClick={openModal}
-              className="w-full md:w-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            >
-              Book Now
-            </button>
-
-            {/* Purchase Vehicle Button */}
-            <button
-              onClick={handlePurchase}
-              className="w-full md:w-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-            >
-              Purchase Vehicle
-            </button>
-          </div>
-
-          {/* Link to Video Walkthrough */}
-          <div className="mt-4">
-            <Link
-              to={`/video-walkthrough/${vehicle.id}`} // Link to the Video Walkthrough page
-              className="text-blue-500 underline"
-            >
-              Watch Video Walkthrough
-            </Link>
           </div>
         </div>
 
