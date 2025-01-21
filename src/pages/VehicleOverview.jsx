@@ -48,7 +48,7 @@ const VehicleOverview = () => {
         </button>
 
         {/* Vehicle Details */}
-        <div className="rounded-lg p-3 bg-gray-800">
+        <div className="rounded-lg p-3">
           <div className="flex flex-col md:flex-row items-center">
             {/* Vehicle Image */}
             <img
