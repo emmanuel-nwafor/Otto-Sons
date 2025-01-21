@@ -26,10 +26,10 @@ const Header = () => {
         </button>
 
         {/* Language Selector */}
-        <select className="bg-gray-700 p-2 rounded">
+        {/* <select className="bg-gray-700 p-2 rounded">
           <option>English</option>
           <option>Spanish</option>
-        </select>
+        </select> */}
       </div>
     </header>
   );

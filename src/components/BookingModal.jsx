@@ -55,13 +55,15 @@ const BookingModal = ({ vehicle, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white text-black p-6 rounded-lg w-full max-w-lg">
-        <h2 className="text-xl font-bold mb-4">Book {vehicle.name}</h2>
-        <img
-          src={vehicle.image}
-          alt={vehicle.name}
-          className="w-full h-40 object-cover rounded mb-4"
-        />
+      <div className="bg-white text-black p-6 m-4 rounded-lg w-full max-w-lg">
+        <div className="flex items-center">
+          <h2 className="text-xl font-bold mb-4"> {vehicle.name}</h2>
+          <img
+            src={vehicle.image}
+            alt={vehicle.name}
+            className="w-full h-44 object-cover rounded mb-4"
+          />
+        </div>
         <input
           type="text"
           placeholder="Full Name"
