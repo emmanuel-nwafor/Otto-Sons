@@ -22,7 +22,7 @@ const SimilarVehicles = ({ currentVehicleId, currentVehicleType }) => {
             {similarVehicles.map((vehicle) => (
               <div
                 key={vehicle.id}
-                className="bg-gray-800 rounded-lg p-5 flex-shrink-0 w-80 cursor-pointer hover:shadow-lg"
+                className="bg-gray-800 rounded-lg p-5 flex-shrink-0 w-80 cusor-pointer hover:shadow-lg"
                 onClick={() => navigate(`/vehicles/${vehicle.id}`)} // Navigate to selected vehicle
               >
                 <img

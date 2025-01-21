@@ -37,7 +37,7 @@ html {
 
 /* Global Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 0;
+  width: 8px;
   height: 8px;
 }
 
@@ -57,5 +57,5 @@ html {
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #4b5563 #1f2937; /* Thumb (Gray-600), Track (Gray-800) */
+  scrollbar-color: #101a29 #1f2937; /* Thumb (Gray-600), Track (Gray-800) */
 }
