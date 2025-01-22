@@ -52,6 +52,12 @@ export const BookingProvider = ({ children }) => {
     deleteBooking(id, "Completed");
   };
 
+  // Clear entire booking history
+  const clearBookingHistory = () => {
+    setBookingHistory([]); // Clear history in state
+    localStorage.removeItem("bookingHistory"); // Remove from localStorage
+  };
+
   return (
     <BookingContext.Provider
       value={{
@@ -60,6 +66,7 @@ export const BookingProvider = ({ children }) => {
         addBooking,
         deleteBooking,
         completeBooking,
+        clearBookingHistory, // Provide clearBookingHistory to components
       }}
     >
       {children}

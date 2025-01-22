@@ -14,6 +14,7 @@ import ManageBookings from "./pages/ManageBookings";
 import BookingHistory from "./pages/BookingHistory";
 import VideoWalkthrough from "./pages/VideoWalkthrough";
 import PurchasePage from "./pages/PurchasePage"; // Import PurchasePage
+import PurchaseHistory from "./pages/PurchaseHistory";
 
 function App() {
   return (
@@ -86,6 +87,16 @@ function App() {
                 <PrivateRoute>
                   <div className="bg-gray-900 min-h-screen text-white">
                     <VideoWalkthrough />
+                  </div>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/purchase-history"
+              element={
+                <PrivateRoute>
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <PurchaseHistory />
                   </div>
                 </PrivateRoute>
               }

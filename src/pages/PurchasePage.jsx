@@ -48,11 +48,28 @@ const PurchasePage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate a purchase request
+    // Create purchase data
+    const purchaseData = {
+      vehicleId: vehicle.id,
+      vehicleName: vehicle.name,
+      vehicleImage: vehicle.image,
+      vehiclePrice: vehicle.price,
+      purchaseDate: new Date().toISOString(),
+      buyerDetails: userDetails,
+    };
+
+    // Save purchase to localStorage
+    const existingHistory =
+      JSON.parse(localStorage.getItem("purchaseHistory")) || [];
+    localStorage.setItem(
+      "purchaseHistory",
+      JSON.stringify([...existingHistory, purchaseData])
+    );
+
     setTimeout(() => {
       setIsSubmitting(false);
       alert("Purchase successful!");
-      navigate("/thank-you"); // Redirect to a thank-you page
+      navigate("/purchase-history"); // Redirect to purchase history page
     }, 2000);
   };
 
@@ -65,7 +82,7 @@ const PurchasePage = () => {
           <img
             src={vehicle.image}
             alt={vehicle.name}
-            className="w-full h- object-cover rounded-lg mb-4"
+            className="w-full h-64 object-cover rounded-lg mb-4"
           />
           <h2 className="text-xl font-semibold">{vehicle.name}</h2>
           <p className="text-lg">Price: {vehicle.price.toFixed(2)} €</p>

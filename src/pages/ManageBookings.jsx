@@ -94,10 +94,11 @@ const ManageBookings = () => {
         // List View
         <div>
           {bookings.length === 0 ? (
-            <div className="  max-md:flex-col flex items-center justify-center ">
-              <p className=" text-white text-[180px] ">No</p>
-
-              <p className=" text-white ">Bookings Available </p>
+            <div className="max-md:flex-col flex items-center justify-center">
+              <p className="text-white text-[180px]">No</p>
+              <p className="text-white">
+                Booking <br className="max-md:hidden" /> available
+              </p>
             </div>
           ) : (
             bookings.map((booking) => (
