@@ -1,9 +1,28 @@
-// Import necessary libraries
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import vehicles from "/src/components/vehicleData"; // Ensure the data source is correctly imported
 
-const PurchasePage = ({ vehicle }) => {
+const PurchasePage = () => {
+  const { id } = useParams(); // Get the vehicle ID from the URL
   const navigate = useNavigate();
+
+  // Find the vehicle by ID
+  const vehicle = vehicles.find((v) => v.id === parseInt(id));
+
+  // Handle case where the vehicle is not found
+  if (!vehicle) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen text-white bg-gray-900">
+        <h1 className="text-2xl font-bold mb-4">Vehicle Not Found</h1>
+        <button
+          onClick={() => navigate("/vehicles")}
+          className="text-blue-500 underline"
+        >
+          Go Back to Vehicle List
+        </button>
+      </div>
+    );
+  }
 
   // State to handle user details for purchase
   const [userDetails, setUserDetails] = useState({
@@ -46,7 +65,7 @@ const PurchasePage = ({ vehicle }) => {
           <img
             src={vehicle.image}
             alt={vehicle.name}
-            className="w-full h-64 object-cover rounded-lg mb-4"
+            className="w-full h- object-cover rounded-lg mb-4"
           />
           <h2 className="text-xl font-semibold">{vehicle.name}</h2>
           <p className="text-lg">Price: {vehicle.price.toFixed(2)} €</p>

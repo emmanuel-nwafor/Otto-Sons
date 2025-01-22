@@ -6,7 +6,6 @@ import HomeRendering from "./components/HomeRendering";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
-import PurchasePage from "./pages/PurchasePage";
 import Error from "./pages/Error";
 import Header from "./components/Header";
 import VehicleList from "./components/VehicleList";
@@ -14,12 +13,12 @@ import VehicleOverview from "./pages/VehicleOverview";
 import ManageBookings from "./pages/ManageBookings";
 import BookingHistory from "./pages/BookingHistory";
 import VideoWalkthrough from "./pages/VideoWalkthrough";
+import PurchasePage from "./pages/PurchasePage"; // Import PurchasePage
 
 function App() {
   return (
     <StatsProvider>
       <BookingProvider>
-        {" "}
         {/* Wrap the app with the BookingProvider */}
         <Router>
           <Routes>
@@ -44,6 +43,18 @@ function App() {
             />
             {/* Vehicle Overview Route */}
             <Route path="/vehicles/:id" element={<VehicleOverview />} />
+            <Route
+              path="/purchase/:id"
+              element={
+                <PrivateRoute>
+                  <Header />
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <PurchasePage />
+                  </div>
+                </PrivateRoute>
+              }
+            />
+
             {/* Manage Bookings Route */}
             <Route
               path="/manage-bookings"
@@ -63,23 +74,22 @@ function App() {
                 <PrivateRoute>
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
-                    <BookingHistory />{" "}
+                    <BookingHistory />
                   </div>
                 </PrivateRoute>
               }
-            />{" "}
-            {/*Video walk through Route */}
+            />
+            {/* Video Walkthrough Route */}
             <Route
               path="/video-walkthrough/:id"
               element={
                 <PrivateRoute>
                   <div className="bg-gray-900 min-h-screen text-white">
-                    <VideoWalkthrough />{" "}
+                    <VideoWalkthrough />
                   </div>
                 </PrivateRoute>
               }
             />
-            <Route path="/purchase" element={<PurchasePage />} />
           </Routes>
         </Router>
       </BookingProvider>

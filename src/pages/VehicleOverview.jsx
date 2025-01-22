@@ -10,6 +10,7 @@ const VehicleOverview = () => {
   const vehicle = vehicles.find((v) => v.id === parseInt(id));
 
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const [isProcessing, setIsProcessing] = useState(false); // State for purchase processing feedback
 
   if (!vehicle) {
     return (
@@ -31,9 +32,14 @@ const VehicleOverview = () => {
   // Function to close the booking modal
   const closeModal = () => setIsModalOpen(false);
 
-  // Function to navigate to the purchase page
+  // Function to handle navigation to purchase page
   const handlePurchase = () => {
-    navigate(`/purchase/${vehicle.id}`);
+    setIsProcessing(true); // Start processing
+
+    // Simulate a short delay before navigating to the purchase page
+    setTimeout(() => {
+      navigate(`/purchase/${vehicle.id}`);
+    }, 2000); // Adjust delay time as needed
   };
 
   return (
@@ -87,10 +93,15 @@ const VehicleOverview = () => {
                 {/* Purchase Vehicle Button */}
                 <button
                   onClick={handlePurchase}
-                  className="w-full md:w-auto bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                  disabled={isProcessing} // Disable button during processing
+                  className={`w-full md:w-auto py-2 px-4 rounded ${
+                    isProcessing
+                      ? "bg-gray-500 cursor-not-allowed"
+                      : "bg-green-500 hover:bg-green-600 text-white"
+                  }`}
                   role="button"
                 >
-                  Purchase Vehicle
+                  {isProcessing ? "Processing..." : "Purchase Vehicle"}
                 </button>
               </div>
 
