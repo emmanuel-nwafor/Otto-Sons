@@ -1,5 +1,4 @@
 import React from "react";
-// import image from "/src/assets/image1.png";
 
 function About2() {
   return (

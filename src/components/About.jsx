@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function About() {
+function About() {
   return (
     <>
       {" "}
@@ -55,3 +55,5 @@ export default function About() {
     </>
   );
 }
+
+export default About;

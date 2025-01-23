@@ -6,7 +6,7 @@ function BookingsPage() {
 
   useEffect(() => {
     const fetchBookings = async () => {
-      const response = await fetch("/bookings.json"); // Or your backend endpoint
+      const response = await fetch("/bookings.json");
       const data = await response.json();
       setBookings(data);
     };

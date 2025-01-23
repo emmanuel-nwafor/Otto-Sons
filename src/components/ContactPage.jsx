@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-// Fix for missing default marker icons in Leaflet
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
@@ -23,7 +22,6 @@ const ContactPage = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold text-gray-400 mb-8">Contact Us</h1>
 
-        {/* Responsive Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Form */}
           <div className="relative z-10 container mx-auto">

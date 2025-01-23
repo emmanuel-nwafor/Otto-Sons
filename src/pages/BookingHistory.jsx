@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useBooking } from "../BookingContext";
 
 const BookingHistory = () => {
-  const { bookingHistory, clearBookingHistory } = useBooking(); // Assuming `clearBookingHistory` clears the booking history
-  const [showModal, setShowModal] = useState(false); // State to manage popup visibility
+  const { bookingHistory, clearBookingHistory } = useBooking();
+  const [showModal, setShowModal] = useState(false);
 
   const handleDeleteHistory = () => {
-    clearBookingHistory(); // Function to clear booking history (assume it's defined in BookingContext)
-    setShowModal(false); // Close the modal
+    clearBookingHistory();
+    setShowModal(false);
   };
 
   return (

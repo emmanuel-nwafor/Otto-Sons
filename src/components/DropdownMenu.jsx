@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DropdownMenu = () => {
-  const [selectedOption, setSelectedOption] = useState(""); // Track the selected option
-  const navigate = useNavigate(); // For navigation between pages
-
+  const [selectedOption, setSelectedOption] = useState("");
+  const navigate = useNavigate();
   const handleSelect = (e) => {
     const value = e.target.value;
     setSelectedOption(value);
 
-    // Navigate to the selected page if it's a valid option
-    if (value === "buy") navigate("/buy");
-    if (value === "repair") navigate("/repair");
+    // if (value === "buy") navigate("/buy");
+    // if (value === "repair") navigate("/repair");
     if (value === "booking") navigate("/manage-bookings");
     if (value === "history") navigate("/booking-history");
-    if (value === "purchase-history") navigate("/purchase-history"); // Navigate to Purchase History
+    if (value === "purchase-history") navigate("/purchase-history");
   };
 
   return (
@@ -32,7 +30,6 @@ const DropdownMenu = () => {
         <option value="booking">Manage Bookings</option>
         <option value="history">Booking History</option>
         <option value="purchase-history">Purchase History</option>{" "}
-        {/* New Option */}
       </select>
     </div>
   );

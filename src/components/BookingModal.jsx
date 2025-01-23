@@ -6,17 +6,15 @@ const BookingModal = ({ vehicle, onClose }) => {
   const [pickUpDate, setPickUpDate] = useState("");
   const [dropOffDate, setDropOffDate] = useState("");
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState(""); // Email input
-  const [totalPrice, setTotalPrice] = useState(0); // For dynamic price calculation
-  const [error, setError] = useState(""); // For date validation errors
+  const [email, setEmail] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [error, setError] = useState("");
 
-  // Calculate the total price whenever the dates change
   useEffect(() => {
     if (pickUpDate && dropOffDate) {
       const pickUp = new Date(pickUpDate);
       const dropOff = new Date(dropOffDate);
 
-      // Ensure drop-off is after pick-up
       if (pickUp > dropOff) {
         setError("Drop-off date cannot be before pick-up date.");
         setTotalPrice(0);
@@ -24,7 +22,7 @@ const BookingModal = ({ vehicle, onClose }) => {
         const days = (dropOff - pickUp) / (1000 * 60 * 60 * 24);
         const price = days * vehicle.price;
         setTotalPrice(price);
-        setError(""); // Clear errors if dates are valid
+        setError("");
       }
     }
   }, [pickUpDate, dropOffDate, vehicle.price]);
@@ -35,7 +33,7 @@ const BookingModal = ({ vehicle, onClose }) => {
       return;
     }
 
-    const bookingId = Date.now(); // Generate a unique ID
+    const bookingId = Date.now();
 
     const newBooking = {
       id: bookingId,
@@ -45,12 +43,12 @@ const BookingModal = ({ vehicle, onClose }) => {
       dropOffDate,
       totalPrice,
       fullName,
-      email, // Include email in booking details
+      email,
     };
 
-    addBooking(newBooking); // Add booking to global state
+    addBooking(newBooking);
     alert("Booking confirmed successfully!");
-    onClose(); // Close the modal
+    onClose();
   };
 
   return (
@@ -107,7 +105,7 @@ const BookingModal = ({ vehicle, onClose }) => {
             Confirm Booking
           </button>
           <button
-            onClick={onClose} // Make sure the onClose is being executed when clicked
+            onClick={onClose}
             className="bg-gray-300 text-black py-2 px-4 rounded ml-4 hover:bg-gray-400"
           >
             Cancel
