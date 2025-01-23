@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { StatsProvider } from "./StatsContext";
-import { BookingProvider } from "./BookingContext"; // Global booking context
+import { BookingProvider } from "./BookingContext";
 import HomeRendering from "./components/HomeRendering";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -13,54 +13,37 @@ import VehicleOverview from "./pages/VehicleOverview";
 import ManageBookings from "./pages/ManageBookings";
 import BookingHistory from "./pages/BookingHistory";
 import VideoWalkthrough from "./pages/VideoWalkthrough";
-import PurchasePage from "./pages/PurchasePage"; // Import PurchasePage
+import PurchasePage from "./pages/PurchasePage";
 import PurchaseHistory from "./pages/PurchaseHistory";
+import AdminDashboard from "./admin/AdminDashboard ";
+
+// admin pages and components
 
 function App() {
   return (
     <StatsProvider>
       <BookingProvider>
-        {/* Wrap the app with the BookingProvider */}
         <Router>
+          {/* Public Routes */}
           <Routes>
             <Route path="/" element={<HomeRendering />} />
-            {/* Authentication Routes */}
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Error />} />
-            {/* Protected Dashboard Route */}
+
             <Route
-              path="/dashboardpage"
+              path="/admin/dashboard"
               element={
-                <PrivateRoute>
-                  <Header />
-                  <div className="bg-gray-900 min-h-screen flex text-white">
-                    <main className="flex">
-                      <VehicleList />
-                    </main>
-                  </div>
-                </PrivateRoute>
-              }
-            />
-            {/* Vehicle Overview Route */}
-            <Route path="/vehicles/:id" element={<VehicleOverview />} />
-            <Route
-              path="/purchase/:id"
-              element={
-                <PrivateRoute>
-                  <Header />
-                  <div className="bg-gray-900 min-h-screen text-white">
-                    <PurchasePage />
-                  </div>
+                <PrivateRoute role="admin">
+                  <AdminDashboard />
                 </PrivateRoute>
               }
             />
 
-            {/* Manage Bookings Route */}
             <Route
-              path="/manage-bookings"
+              path="manage-bookings"
               element={
-                <PrivateRoute>
+                <PrivateRoute requiredRole="admin">
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
                     <ManageBookings />
@@ -68,36 +51,54 @@ function App() {
                 </PrivateRoute>
               }
             />
-            {/* Booking History Route */}
             <Route
-              path="/booking-history"
+              path="/dashboardPage"
               element={
-                <PrivateRoute>
+                <PrivateRoute requiredRole="user">
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
-                    <BookingHistory />
+                    <VehicleList />
                   </div>
                 </PrivateRoute>
               }
             />
-            {/* Video Walkthrough Route */}
             <Route
-              path="/video-walkthrough/:id"
+              path="/vehicles/:id"
               element={
                 <PrivateRoute>
-                  <div className="bg-gray-900 min-h-screen text-white">
-                    <VideoWalkthrough />
-                  </div>
+                  <VehicleOverview />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/purchase/:id"
+              element={
+                <PrivateRoute requiredRole="user">
+                  <PurchasePage />
                 </PrivateRoute>
               }
             />
             <Route
               path="/purchase-history"
               element={
+                <PrivateRoute requiredRole="user">
+                  <PurchaseHistory />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/video-walkthrough/:id"
+              element={
                 <PrivateRoute>
-                  <div className="bg-gray-900 min-h-screen text-white">
-                    <PurchaseHistory />
-                  </div>
+                  <VideoWalkthrough />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/booking-history"
+              element={
+                <PrivateRoute requiredRole="user">
+                  <BookingHistory />
                 </PrivateRoute>
               }
             />

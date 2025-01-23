@@ -78,6 +78,33 @@ const vehicles = [
     videoWalkthrough:
       "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
   },
+  {
+    id: 9,
+    name: "Lexus XT6",
+    price: 150.0,
+    image: "https://pngimg.com/uploads/lexus/lexus_PNG11.png",
+    type: "Manual",
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+  },
+  {
+    id: 10,
+    name: "Lexus GTX 2022 Model",
+    price: 170.0,
+    image: "https://pngimg.com/uploads/lexus/lexus_PNG21.png",
+    type: "Manual",
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+  },
+  {
+    id: 11,
+    name: "Lexus XT6 Mini",
+    price: 120.0,
+    image: "https://pngimg.com/uploads/lexus/lexus_PNG5.png",
+    type: "Automatic",
+    videoWalkthrough:
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+  }, //
 ];
 
 export default vehicles;

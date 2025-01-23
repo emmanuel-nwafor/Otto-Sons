@@ -3,35 +3,35 @@ import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Footer from "../components/Footer";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isPopupVisible, setPopupVisible] = useState(false); // State to control popup visibility
+  const [isPopupVisible, setPopupVisible] = useState(false); // State for popup visibility
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setPopupVisible(true); // Show popup after successful login
+      setPopupVisible(true);
+
+      const timer = setTimeout(() => {
+        if (email === "admin@gmail.com" || email === "admin123@gmail.com") {
+          localStorage.setItem("role", "admin");
+          navigate("/admin/dashboard");
+        } else {
+          localStorage.setItem("role", "user");
+          navigate("/dashboardPage"); // Redirect to VehicleList
+        }
+      }, 1000);
+
+      return () => clearTimeout(timer);
     } catch (err) {
       setError(err.message);
     }
   };
-
-  // Automatically redirect after a successful login
-  useEffect(() => {
-    if (isPopupVisible) {
-      const timer = setTimeout(() => {
-        navigate("/dashboardPage"); // Navigate to dashboard after a short delay
-      }, 1000);
-
-      return () => clearTimeout(timer); // Cleanup the timeout when the component unmounts
-    }
-  }, [isPopupVisible, navigate]);
 
   return (
     <>
@@ -52,7 +52,6 @@ function Login() {
           </div>
         </div>
 
-        {/* Right Section with Form */}
         <div className="w-full md:w-1/2 bg-gray-900 z-50 flex items-center justify-center">
           <motion.div
             className="w-full max-w-md px-8"
@@ -132,8 +131,6 @@ function Login() {
           </motion.div>
         </div>
       )}
-
-      <Footer />
     </>
   );
 }
