@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import vehicles from "/src/components/vehicleData.js";
-import { useBooking } from "../BookingContext"; // Import useBooking hook
+import { useBooking } from "../BookingContext";
+import Logo1 from "/src/assets/logo1.png";
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,24 +35,17 @@ const AdminDashboard = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }} // Smooth fade-in and fade-out transition
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-gray-800 flex flex-col"
     >
       {/* Header */}
       <header className="bg-gray-600 text-white py-4 shadow-md">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Welcome Admin</h1>
-          <button
-            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
-            onClick={() => {
-              localStorage.clear();
-              window.location.href = "/login";
-            }}
-          >
-            Logout
-          </button>
-
-          {/* Mobile Menu Toggle */}
+          <div className="flex items-center">
+            {" "}
+            <h1 className="text-xl font-bold">Welcome Admin</h1>
+            <img src={Logo1} className=" h-14 " alt="" />
+          </div>
           <button
             className="lg:hidden text-white"
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -102,6 +96,15 @@ const AdminDashboard = () => {
                   Generate Reports
                 </Link>
               </li>
+              <button
+                className=" ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.href = "/login";
+                }}
+              >
+                Logout
+              </button>
             </ul>
           </nav>
         </aside>

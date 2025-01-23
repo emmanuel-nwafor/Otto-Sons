@@ -86,7 +86,7 @@ function App() {
             <Route
               path="manage-bookings"
               element={
-                <PrivateRoute requiredRole="admin">
+                <PrivateRoute requiredRole="user">
                   <Header />
                   <div className="bg-gray-900 min-h-screen text-white">
                     <ManageBookings />
