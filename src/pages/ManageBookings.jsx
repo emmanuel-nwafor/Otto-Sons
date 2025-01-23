@@ -59,7 +59,7 @@ const ManageBookings = () => {
 
   return (
     <div className="p-6">
-      <div className="flex justify-evenly items-center mb-5">
+      <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl font-bold">Manage Bookings</h1>
         <button
           onClick={() => setShowCalendar((prev) => !prev)}

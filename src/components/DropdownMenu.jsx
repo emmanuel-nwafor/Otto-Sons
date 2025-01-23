@@ -25,8 +25,8 @@ const DropdownMenu = () => {
         <option value="" disabled>
           Select an Option
         </option>
-        <option value="buy">Buy</option>
-        <option value="repair">Repair</option>
+        {/* <option value="buy">Buy</option>
+        <option value="repair">Repair</option> */}
         <option value="booking">Manage Bookings</option>
         <option value="history">Booking History</option>
         <option value="purchase-history">Purchase History</option>{" "}

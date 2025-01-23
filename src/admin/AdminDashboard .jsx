@@ -1,14 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import vehicles from "/src/components/vehicleData.js";
+import { useBooking } from "../BookingContext"; // Import useBooking hook
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [users, setUsers] = useState([]);
+  const { bookings } = useBooking(); // Access bookings from BookingContext
+
+  // Fetch existing users from localStorage
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setUsers(storedUsers);
+  }, []);
+
+  // Function to handle user updates
+  const handleUpdateUser = (updatedUser) => {
+    const updatedUsers = users.map((user) =>
+      user.id === updatedUser.id ? updatedUser : user
+    );
+
+    // Update state and localStorage
+    setUsers(updatedUsers);
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    // Notify user dashboard of changes
+    window.dispatchEvent(new Event("storage"));
+  };
 
   return (
-    <div className="min-h-screen bg-gray-800 flex flex-col">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }} // Smooth fade-in and fade-out transition
+      className="min-h-screen bg-gray-800 flex flex-col"
+    >
       {/* Header */}
-      <header className="bg-gray-600 text-white py-4 shadow-md ">
+      <header className="bg-gray-600 text-white py-4 shadow-md">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-xl font-bold">Welcome Admin</h1>
           <button
             className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
             onClick={() => {
@@ -24,7 +56,7 @@ const AdminDashboard = () => {
             className="lg:hidden text-white"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
-            <i class="bx bx-menu-alt-right text-[25px] "></i>{" "}
+            <i className="bx bx-menu-alt-right text-[25px]"></i>
           </button>
         </div>
       </header>
@@ -39,36 +71,36 @@ const AdminDashboard = () => {
           <nav>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/manage-users"
                   className="block py-2 px-4 rounded hover:bg-blue-100 hover:text-black"
                 >
                   Manage Users
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/manage-vehicles"
                   className="block py-2 px-4 rounded hover:bg-blue-100 hover:text-black"
                 >
                   Manage Vehicles
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/view-bookings"
                   className="block py-2 px-4 rounded hover:bg-blue-100 hover:text-black"
                 >
-                  View Bookings
-                </a>
+                  All Bookings & Purchase
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/generate-reports"
                   className="block py-2 px-4 rounded hover:bg-blue-100 hover:text-black"
                 >
                   Generate Reports
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -76,24 +108,50 @@ const AdminDashboard = () => {
 
         {/* Main Content */}
         <main className="flex-1 bg-gray-50 p-6">
-          <h2 className="text-2xl font-semibold mb-4">Welcome, Admin</h2>
-          <p className="text-gray-600 mb-6">
-            Use the navigation menu to manage users, vehicles, bookings, and
-            reports.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {/* Statistics */}
+          <h2 className="text-2xl font-semibold m-1">Statistics</h2>
+
+          {/* Manage Users Section */}
+          <section>
+            <ul className="space-y-4">
+              {users.map((user) => (
+                <li
+                  key={user.id}
+                  className="bg-white p-4 rounded shadow flex justify-between items-center"
+                >
+                  <div>
+                    <p className="text-lg font-semibold">{user.name}</p>
+                    <p className="text-gray-600">Role: {user.role}</p>
+                  </div>
+                  <button
+                    onClick={() =>
+                      handleUpdateUser({ ...user, role: "updatedRole" })
+                    }
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+                  >
+                    Update Role
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Statistics Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold">Total Users</h3>
-              <p className="text-3xl font-bold text-blue-600">120</p>
+              <p className="text-3xl font-bold text-blue-600">{users.length}</p>
             </div>
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold">Total Vehicles</h3>
-              <p className="text-3xl font-bold text-blue-600">45</p>
+              <p className="text-3xl font-bold text-blue-600">
+                {vehicles.length}
+              </p>
             </div>
             <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-lg font-semibold">Bookings Today</h3>
-              <p className="text-3xl font-bold text-blue-600">8</p>
+              <h3 className="text-lg font-semibold">Total Bookings</h3>
+              <p className="text-3xl font-bold text-blue-600">
+                {bookings.length} {/* Display total number of bookings */}
+              </p>
             </div>
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold">Reports Generated</h3>
@@ -102,7 +160,7 @@ const AdminDashboard = () => {
           </div>
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -6,11 +6,14 @@ const PrivateRoute = ({ role, children }) => {
   const currentRole = localStorage.getItem("role");
 
   // Check if the user is authenticated
-  if (!auth.currentUser) {
+  const isAuthenticated = auth.currentUser;
+
+  // If the user is not authenticated, redirect to login
+  if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
 
-  // Check for role-based access
+  // If role is provided and doesn't match, redirect accordingly
   if (role && currentRole !== role) {
     return currentRole === "admin" ? (
       <Navigate to="/admin/dashboard" />

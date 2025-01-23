@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <>
       {" "}
-      <header className="text-white bg-gray-800 py-4 px-6 flex justify-between items-center">
+      <header className="text-white bg-gray-700 py-4 px-6 flex justify-between items-center">
         <div className="flex items-center">
           <span className="text-[25px] font-bold flex items-center">
             Otto-Sons <img src={Logo1} className="h-16" alt="" />

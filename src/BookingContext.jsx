@@ -1,11 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const BookingContext = createContext();
 
 export const useBooking = () => useContext(BookingContext);
 
 export const BookingProvider = ({ children }) => {
-  // State for current bookings and booking history
   const [bookings, setBookings] = useState(() => {
     const savedBookings = localStorage.getItem("bookings");
     return savedBookings ? JSON.parse(savedBookings) : [];
@@ -16,16 +15,18 @@ export const BookingProvider = ({ children }) => {
     return savedHistory ? JSON.parse(savedHistory) : [];
   });
 
-  // Save to localStorage
   const saveToLocalStorage = (key, data) => {
     localStorage.setItem(key, JSON.stringify(data));
   };
 
-  // Add a new booking
   const addBooking = (newBooking) => {
     const updatedBookings = [...bookings, newBooking];
+    const updatedHistory = [...bookingHistory, newBooking]; // Add to history as well
     setBookings(updatedBookings);
+    setBookingHistory(updatedHistory);
+
     saveToLocalStorage("bookings", updatedBookings);
+    saveToLocalStorage("bookingHistory", updatedHistory); // Save to localStorage
   };
 
   // Delete (move to history) a booking
@@ -47,16 +48,27 @@ export const BookingProvider = ({ children }) => {
     saveToLocalStorage("bookingHistory", updatedHistory);
   };
 
-  // Mark a booking as completed
   const completeBooking = (id) => {
     deleteBooking(id, "Completed");
   };
 
   // Clear entire booking history
   const clearBookingHistory = () => {
-    setBookingHistory([]); // Clear history in state
     localStorage.removeItem("bookingHistory"); // Remove from localStorage
   };
+
+  useEffect(() => {
+    const savedBookings = localStorage.getItem("bookings");
+    const savedHistory = localStorage.getItem("bookingHistory");
+
+    if (savedBookings) {
+      setBookings(JSON.parse(savedBookings));
+    }
+
+    if (savedHistory) {
+      setBookingHistory(JSON.parse(savedHistory));
+    }
+  }, []);
 
   return (
     <BookingContext.Provider

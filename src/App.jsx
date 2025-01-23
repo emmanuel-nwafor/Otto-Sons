@@ -15,9 +15,13 @@ import BookingHistory from "./pages/BookingHistory";
 import VideoWalkthrough from "./pages/VideoWalkthrough";
 import PurchasePage from "./pages/PurchasePage";
 import PurchaseHistory from "./pages/PurchaseHistory";
-import AdminDashboard from "./admin/AdminDashboard ";
 
 // admin pages and components
+import AdminDashboard from "./admin/AdminDashboard ";
+import ManageUsers from "./admin/ManageUsers";
+import ManageVehicles from "./admin/ManageVehicles";
+import AdminBookingDetails from "./admin/AdminBookingDetails";
+import GenerateReport from "./admin/GenerateReport";
 
 function App() {
   return (
@@ -31,6 +35,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Error />} />
 
+            {/* All admin rendering and integrations */}
             <Route
               path="/admin/dashboard"
               element={
@@ -39,6 +44,44 @@ function App() {
                 </PrivateRoute>
               }
             />
+
+            <Route
+              path="/manage-users"
+              element={
+                <PrivateRoute role="admin">
+                  <ManageUsers />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/manage-vehicles"
+              element={
+                <PrivateRoute role="admin">
+                  <ManageVehicles />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/view-bookings"
+              element={
+                <PrivateRoute role="admin">
+                  <AdminBookingDetails />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/generate-reports"
+              element={
+                <PrivateRoute role="admin">
+                  <GenerateReport />
+                </PrivateRoute>
+              }
+            />
+
+            {/* Admin closing */}
 
             <Route
               path="manage-bookings"
@@ -97,8 +140,10 @@ function App() {
             <Route
               path="/booking-history"
               element={
-                <PrivateRoute requiredRole="user">
-                  <BookingHistory />
+                <PrivateRoute>
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <BookingHistory />
+                  </div>
                 </PrivateRoute>
               }
             />

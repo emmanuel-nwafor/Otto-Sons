@@ -33,7 +33,7 @@ const VehicleList = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-6 flex-col items-center justify-center z-40 transition-transform transform lg:static lg:translate-x-0 ${
+        className={`fixed top-0 left-0 bg-gray-800 text-white p-6 flex-col items-center justify-center z-40 transition-transform transform lg:static lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
