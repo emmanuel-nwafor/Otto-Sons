@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import vehicles from "/src/components/vehicleData.js";
 import { useBooking } from "../BookingContext";
+import StatisticsChart from "./StatisticsChart";
 import Logo1 from "/src/assets/logo1.png";
 
 const AdminDashboard = () => {
@@ -161,6 +162,10 @@ const AdminDashboard = () => {
               <p className="text-3xl font-bold text-blue-600">15</p>
             </div>
           </div>
+          {/* Chart Section */}
+          <br />
+          <br />
+          <StatisticsChart bookings={bookings} users={users} />
         </main>
       </div>
     </motion.div>

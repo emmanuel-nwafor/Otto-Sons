@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import vehicles from "/src/components/vehicleData";
 
 const VehicleList = () => {
   const [selectedType, setSelectedType] = useState("");
   const [maxPrice, setMaxPrice] = useState(200);
+  const [vehicles, setVehicles] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Fetch vehicles from localStorage or default to an empty array
+    const storedVehicles = localStorage.getItem("vehicles");
+    setVehicles(storedVehicles ? JSON.parse(storedVehicles) : []);
+  }, []);
+
   const handleLogout = () => {
-    localStorage.removeItem("user"); // Clear user data from localStorage
-    navigate("/login"); // Redirect to the login page
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   // Filter vehicles based on selected type and max price
   const filteredVehicles = vehicles.filter((vehicle) => {
     const matchesType = selectedType ? vehicle.type === selectedType : true;
     const matchesPrice = vehicle.price <= maxPrice;
-
     return matchesType && matchesPrice;
   });
 
@@ -60,11 +65,9 @@ const VehicleList = () => {
         >
           Log out
         </button>
-        <br />
-        <br />
 
         {/* Price Filter */}
-        <div className="mb-4">
+        <div className="mb-4 mt-8">
           <h3 className="text-sm font-semibold mb-2">Max Price (€/day)</h3>
           <input
             type="range"
@@ -104,7 +107,9 @@ const VehicleList = () => {
               />
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-2xl">{vehicle.name}</h3>
-                <p className="text-sm mb-2">{vehicle.price.toFixed(2)} €/day</p>
+                <p className="text-sm mb-2">
+                  {vehicle.price ? vehicle.price.toFixed(2) : "N/A"} €/day
+                </p>
               </div>
               <span className="text-xs bg-gray-700 px-3 py-1 rounded">
                 {vehicle.type}
