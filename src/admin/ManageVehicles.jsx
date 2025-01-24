@@ -13,7 +13,6 @@ const ManageVehicles = () => {
     name: "",
     type: "",
     price: "",
-    features: "",
     imageUrl: "",
     status: "Available",
   });
@@ -29,39 +28,51 @@ const ManageVehicles = () => {
     // Validate inputs
     if (
       !newVehicle.name ||
-      !newVehicle.price ||
       !newVehicle.type ||
+      !newVehicle.price ||
       !newVehicle.imageUrl
     ) {
       alert("Please fill in all required fields, including the image URL.");
       return;
     }
 
-    // Ensure price is stored as a number
-    const updatedVehicles = [
-      ...vehicles,
-      {
-        ...newVehicle,
-        id: Date.now(),
-        price: parseFloat(newVehicle.price),
-        image: newVehicle.imageUrl,
-      },
-    ];
+    if (isNaN(newVehicle.price) || newVehicle.price <= 0) {
+      alert("Please enter a valid positive number for the price.");
+      return;
+    }
 
+    // Create a new vehicle object
+    const newVehicleEntry = {
+      ...newVehicle,
+      id: Date.now(),
+      price: parseFloat(newVehicle.price),
+      image: newVehicle.imageUrl,
+    };
+
+    // Update the vehicles list
+    const updatedVehicles = [...vehicles, newVehicleEntry];
     setVehicles(updatedVehicles);
 
     // Save to localStorage
     localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
 
-    // Reset form
+    // Reset the form
     setNewVehicle({
       name: "",
       type: "",
       price: "",
-      features: "",
       imageUrl: "",
       status: "Available",
     });
+
+    alert("Vehicle added successfully!");
+  };
+
+  const handleDeleteVehicle = (id) => {
+    const updatedVehicles = vehicles.filter((vehicle) => vehicle.id !== id);
+    setVehicles(updatedVehicles);
+    localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
+    alert("Vehicle deleted successfully!");
   };
 
   return (
@@ -111,14 +122,6 @@ const ManageVehicles = () => {
             />
             <input
               type="text"
-              name="features"
-              value={newVehicle.features}
-              onChange={handleInputChange}
-              placeholder="Features (comma-separated)"
-              className="p-2 border rounded"
-            />
-            <input
-              type="text"
               name="imageUrl"
               value={newVehicle.imageUrl}
               onChange={handleInputChange}
@@ -148,8 +151,13 @@ const ManageVehicles = () => {
               <h3 className="text-lg font-bold">{vehicle.name}</h3>
               <p>Type: {vehicle.type}</p>
               <p>Price: €{vehicle.price.toFixed(2)}</p>
-              <p>Features: {vehicle.features}</p>
               <p>Status: {vehicle.status}</p>
+              <button
+                onClick={() => handleDeleteVehicle(vehicle.id)}
+                className="mt-4 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>

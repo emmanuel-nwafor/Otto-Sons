@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import vehicles from "/src/components/vehicleData.js";
 import { useBooking } from "../BookingContext";
 import StatisticsChart from "./StatisticsChart";
 import Logo1 from "/src/assets/logo1.png";
@@ -9,12 +8,15 @@ import Logo1 from "/src/assets/logo1.png";
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
   const { bookings } = useBooking(); // Access bookings from BookingContext
 
-  // Fetch existing users from localStorage
+  // Fetch users and vehicles from localStorage
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setUsers(storedUsers);
+    const storedVehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+    setVehicles(storedVehicles);
   }, []);
 
   // Function to handle user updates
@@ -23,12 +25,25 @@ const AdminDashboard = () => {
       user.id === updatedUser.id ? updatedUser : user
     );
 
-    // Update state and localStorage
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    // Notify user dashboard of changes
     window.dispatchEvent(new Event("storage"));
+  };
+
+  // Function to handle adding a new vehicle
+  const handleAddVehicle = (newVehicle) => {
+    const updatedVehicles = [...vehicles, newVehicle];
+    setVehicles(updatedVehicles);
+    localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
+  };
+
+  // Function to handle deleting a vehicle
+  const handleDeleteVehicle = (vehicleId) => {
+    const updatedVehicles = vehicles.filter(
+      (vehicle) => vehicle.id !== vehicleId
+    );
+    setVehicles(updatedVehicles);
+    localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
   };
 
   return (
@@ -43,7 +58,6 @@ const AdminDashboard = () => {
       <header className="bg-gray-600 text-white py-4 shadow-md">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
-            {" "}
             <h1 className="text-xl font-bold">Welcome Admin</h1>
             <img src={Logo1} className=" h-14 " alt="" />
           </div>
@@ -154,7 +168,7 @@ const AdminDashboard = () => {
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold">Total Bookings</h3>
               <p className="text-3xl font-bold text-blue-600">
-                {bookings.length} {/* Display total number of bookings */}
+                {bookings.length}
               </p>
             </div>
             <div className="bg-white p-4 rounded shadow">
@@ -162,6 +176,7 @@ const AdminDashboard = () => {
               <p className="text-3xl font-bold text-blue-600">15</p>
             </div>
           </div>
+
           {/* Chart Section */}
           <br />
           <br />

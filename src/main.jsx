@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { BookingProvider } from "./BookingContext";
-import { StatsProvider } from "./StatsContext";
 
 const container = document.getElementById("root");
 
@@ -12,9 +11,8 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BookingProvider>
-      <StatsProvider>
-        <App />
-      </StatsProvider>
+      {" "}
+      <App />
     </BookingProvider>
   </React.StrictMode>
 );

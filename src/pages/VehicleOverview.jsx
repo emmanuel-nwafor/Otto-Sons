@@ -58,27 +58,34 @@ const VehicleOverview = () => {
           <div className="flex flex-col md:flex-row items-center">
             {/* Vehicle Image */}
             <img
-              src={vehicle.image}
-              alt={vehicle.name}
+              src={vehicle.image || "/default-image.png"}
+              alt={vehicle.name || "Unknown Vehicle"}
               className="w-full md:w-1/2 rounded-lg mb-6 md:mb-0 md:mr-6"
             />
 
             {/* Vehicle Info */}
             <div className="flex-1">
-              <h1 className="text-3xl font-bold mb-4">{vehicle.name}</h1>
+              <h1 className="text-3xl font-bold mb-4">
+                {vehicle.name || "Unknown Vehicle"}
+              </h1>
               <p className="text-xl mb-4">
                 Price:{" "}
-                <span className="text-green-500">{vehicle.price} €/day</span>
+                <span className="text-green-500">
+                  {vehicle.price
+                    ? `${vehicle.price} €/day`
+                    : "Price not available"}
+                </span>
               </p>
               <p className="text-lg mb-4">
                 Transmission:{" "}
                 <span className="bg-gray-700 px-3 py-1 rounded">
-                  {vehicle.type}
+                  {vehicle.type || "Unknown"}
                 </span>
               </p>
               <p className="text-lg mb-6">
-                Description: This {vehicle.name} is the perfect choice for your
-                next trip, combining luxury, performance, and affordability.
+                Description: This {vehicle.name || "vehicle"} is the perfect
+                choice for your next trip, combining luxury, performance, and
+                affordability.
               </p>
               <div className="flex gap-4">
                 {/* Book Now Button */}
@@ -106,14 +113,16 @@ const VehicleOverview = () => {
               </div>
 
               {/* Link to Video Walkthrough */}
-              <div className="mt-4">
-                <Link
-                  to={`/video-walkthrough/${vehicle.id}`} // Link to the Video Walkthrough page
-                  className="text-blue-500 underline"
-                >
-                  Watch Video Walkthrough
-                </Link>
-              </div>
+              {vehicle.videoWalkthrough && (
+                <div className="mt-4">
+                  <Link
+                    to={`/video-walkthrough/${vehicle.id}`} // Link to the Video Walkthrough page
+                    className="text-blue-500 underline"
+                  >
+                    Watch Video Walkthrough
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

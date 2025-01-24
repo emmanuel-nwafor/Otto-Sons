@@ -7,7 +7,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/bmw-png/bmw-reviews-and-rating-motor-trend-1.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/6157909/6157909-sd_640_360_30fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/6157909/6157909-sd_640_360_30fps.mp4",
+    status: "available",
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const vehicles = [
     image: "https://pngimg.com/uploads/bmw/bmw_PNG1702.png",
     type: "Manual",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/13643097/13643097-sd_640_360_24fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/13643097/13643097-sd_640_360_24fps.mp4",
+    status: "unavailable",
   },
   {
     id: 3,
@@ -26,7 +28,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/bmw-png/white-bmw-car-png-image-pngpix-26.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/5911023/5911023-sd_640_360_24fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/5911023/5911023-sd_640_360_24fps.mp4",
+    status: "available",
   },
   {
     id: 4,
@@ -36,7 +39,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/mercedes-png/mercedes-benz-class-price-features-mercedes-benz-7.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/4095619/4095619-sd_640_360_30fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/4095619/4095619-sd_640_360_30fps.mp4",
+    status: "available",
   },
   {
     id: 5,
@@ -46,7 +50,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-specs-price-mpg-reviews-carsm-35.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/4707142/4707142-sd_640_360_24fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/4707142/4707142-sd_640_360_24fps.mp4",
+    status: "unavailable",
   },
   {
     id: 6,
@@ -56,7 +61,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/fortuner-png/toyota-fortuner-malaysia-reviews-specs-prices-6.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/4101689/4101689-sd_640_360_25fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/4101689/4101689-sd_640_360_25fps.mp4",
+    status: "available",
   },
   {
     id: 7,
@@ -66,7 +72,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/car-png/blue-jaguar-pace-side-view-car-png-image-pngpix-37.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/3066447/3066447-sd_960_506_24fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/3066447/3066447-sd_960_506_24fps.mp4",
+    status: "available",
   },
   {
     id: 8,
@@ -76,7 +83,8 @@ const vehicles = [
       "https://www.freepnglogos.com/uploads/ferrari-png/ferrari-california-reviews-and-rating-motor-trend-23.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4",
+    status: "unavailable",
   },
   {
     id: 9,
@@ -85,7 +93,8 @@ const vehicles = [
     image: "https://pngimg.com/uploads/lexus/lexus_PNG11.png",
     type: "Manual",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4",
+    status: "available",
   },
   {
     id: 10,
@@ -94,7 +103,8 @@ const vehicles = [
     image: "https://pngimg.com/uploads/lexus/lexus_PNG21.png",
     type: "Manual",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4",
+    status: "available",
   },
   {
     id: 11,
@@ -103,8 +113,9 @@ const vehicles = [
     image: "https://pngimg.com/uploads/lexus/lexus_PNG5.png",
     type: "Automatic",
     videoWalkthrough:
-      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4", // Add your video URL here
-  }, //
+      "https://videos.pexels.com/video-files/5309351/5309351-sd_640_360_25fps.mp4",
+    status: "unavailable",
+  },
 ];
 
 export default vehicles;
