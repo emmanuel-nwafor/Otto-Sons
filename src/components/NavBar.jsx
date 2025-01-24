@@ -72,7 +72,7 @@ const NavBar = () => {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
             >
-              <div className="flex flex-col items-center space-y-4 rounded-lg ">
+              <div className="flex flex-col items-center space-y-4 ">
                 <a href="#home" className="hover:text-zinc-200 hover:underline">
                   Home
                 </a>
