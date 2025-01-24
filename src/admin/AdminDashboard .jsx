@@ -9,14 +9,19 @@ const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState([]);
   const [vehicles, setVehicles] = useState([]);
+  const [reportsGenerated, setReportsGenerated] = useState(0); // State for reports generated
   const { bookings } = useBooking(); // Access bookings from BookingContext
 
-  // Fetch users and vehicles from localStorage
+  // Fetch existing data from localStorage
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setUsers(storedUsers);
+
     const storedVehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
     setVehicles(storedVehicles);
+
+    const storedReports = JSON.parse(localStorage.getItem("reports")) || [];
+    setReportsGenerated(storedReports.length); // Set number of reports generated
   }, []);
 
   // Function to handle user updates
@@ -25,25 +30,12 @@ const AdminDashboard = () => {
       user.id === updatedUser.id ? updatedUser : user
     );
 
+    // Update state and localStorage
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    // Notify user dashboard of changes
     window.dispatchEvent(new Event("storage"));
-  };
-
-  // Function to handle adding a new vehicle
-  const handleAddVehicle = (newVehicle) => {
-    const updatedVehicles = [...vehicles, newVehicle];
-    setVehicles(updatedVehicles);
-    localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
-  };
-
-  // Function to handle deleting a vehicle
-  const handleDeleteVehicle = (vehicleId) => {
-    const updatedVehicles = vehicles.filter(
-      (vehicle) => vehicle.id !== vehicleId
-    );
-    setVehicles(updatedVehicles);
-    localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
   };
 
   return (
@@ -52,14 +44,14 @@ const AdminDashboard = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-800 flex flex-col"
+      className="min-h-screen bg-gray-700 flex flex-col"
     >
       {/* Header */}
       <header className="bg-gray-600 text-white py-4 shadow-md">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
             <h1 className="text-xl font-bold">Welcome Admin</h1>
-            <img src={Logo1} className=" h-14 " alt="" />
+            <img src={Logo1} className="h-14" alt="Logo" />
           </div>
           <button
             className="lg:hidden text-white"
@@ -73,9 +65,9 @@ const AdminDashboard = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`lg:w-64 lg:h-[100vh] bg-gray-700 shadow-md p-4 transition-transform transform ${
+          className={`lg:w-64 lg:h-[100vh] p-4 transition-transform transform ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 lg:static fixed top-0 left-0 z-10 h-full w-64 bg-gray-700 text-white shadow-md p-4`}
+          } lg:translate-x-0 lg:static fixed top-0 left-0 z-10 h-full w-64 bg-gray-700 text-white p-4`}
         >
           <nav>
             <ul className="space-y-2">
@@ -112,9 +104,9 @@ const AdminDashboard = () => {
                 </Link>
               </li>
               <button
-                className=" ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                className="ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
                 onClick={() => {
-                  localStorage.clear();
+                  // localStorage.clear();
                   window.location.href = "/login";
                 }}
               >
@@ -173,7 +165,9 @@ const AdminDashboard = () => {
             </div>
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold">Reports Generated</h3>
-              <p className="text-3xl font-bold text-blue-600">15</p>
+              <p className="text-3xl font-bold text-blue-600">
+                {reportsGenerated}
+              </p>
             </div>
           </div>
 

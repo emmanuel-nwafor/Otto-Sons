@@ -21,7 +21,25 @@ function Signup() {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      // Create user with Firebase
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Get the new user info
+      const newUser = {
+        id: userCredential.user.uid, // Using UID as unique user identifier
+        email: email,
+        role: "user", // Default role for new users (can be changed later)
+      };
+
+      // Save user info to localStorage
+      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      storedUsers.push(newUser);
+      localStorage.setItem("users", JSON.stringify(storedUsers));
+
       setSuccess(true);
       setTimeout(() => {
         navigate("/login");

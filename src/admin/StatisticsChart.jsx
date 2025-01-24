@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,14 +21,22 @@ ChartJS.register(
 );
 
 const StatisticsChart = ({ bookings, users }) => {
+  const [reportsGenerated, setReportsGenerated] = useState(0);
+
+  // Fetch the report count from localStorage
+  useEffect(() => {
+    const reportCount = JSON.parse(localStorage.getItem("reportCount")) || 0;
+    setReportsGenerated(reportCount);
+  }, []);
+
   const chartData = {
-    labels: ["Total Users", "Total Bookings"],
+    labels: ["Total Users", "Total Bookings", "Reports Generated"],
     datasets: [
       {
         label: "Statistics",
-        data: [users.length, bookings.length],
-        backgroundColor: ["#4CAF50", "#2196F3"],
-        borderColor: ["#388E3C", "#1976D2"],
+        data: [users.length, bookings.length, reportsGenerated],
+        backgroundColor: ["#4CAF50", "#2196F3", "#FF9800"], // New color for reports
+        borderColor: ["#388E3C", "#1976D2", "#F57C00"], // Border color for reports
         borderWidth: 1,
         barThickness: 40, // Adjust bar thickness for better sizing
         maxBarThickness: 50, // Maximum bar thickness for responsiveness
@@ -47,7 +55,7 @@ const StatisticsChart = ({ bookings, users }) => {
       tooltip: {
         enabled: true,
         callbacks: {
-          label: (context) => `${context.raw} items`,
+          label: (context) => `${context.raw} items`, // Display number of items
         },
       },
     },
@@ -81,7 +89,7 @@ const StatisticsChart = ({ bookings, users }) => {
       style={{ height: "400px" }}
     >
       <h3 className="text-lg font-semibold mb-4">
-        Booking and User Statistics
+        Booking, User, and Report Statistics
       </h3>
       <Bar data={chartData} options={chartOptions} />
     </div>

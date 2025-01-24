@@ -60,10 +60,13 @@ const VehicleList = () => {
 
         {/* Logout Button */}
         <button
-          onClick={handleLogout}
-          className="bg-red-700 hover:bg-red-600 transition-all text-white py-2 px-20 lg:px-1 rounded"
+          className=" ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+          onClick={() => {
+            // localStorage.clear();
+            window.location.href = "/login";
+          }}
         >
-          Log out
+          Logout
         </button>
 
         {/* Price Filter */}
