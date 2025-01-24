@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
 
 const VehicleList = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -7,6 +8,7 @@ const VehicleList = () => {
   const [vehicles, setVehicles] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const controls = useAnimation(); // Animation control
 
   useEffect(() => {
     // Fetch vehicles from localStorage or default to an empty array
@@ -25,6 +27,12 @@ const VehicleList = () => {
     const matchesPrice = vehicle.price <= maxPrice;
     return matchesType && matchesPrice;
   });
+
+  // Scroll-based animation trigger for each vehicle card
+  const vehicleVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen">
@@ -60,11 +68,8 @@ const VehicleList = () => {
 
         {/* Logout Button */}
         <button
-          className=" ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
-          onClick={() => {
-            // localStorage.clear();
-            window.location.href = "/login";
-          }}
+          className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+          onClick={handleLogout}
         >
           Logout
         </button>
@@ -98,10 +103,14 @@ const VehicleList = () => {
         <h2 className="text-xl font-bold mb-4">Cars</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredVehicles.map((vehicle) => (
-            <div
+            <motion.div
               key={vehicle.id}
               className="bg-gray-800 rounded-lg p-5 flex-col hover:shadow-lg cursor-pointer"
               onClick={() => navigate(`/vehicles/${vehicle.id}`)}
+              variants={vehicleVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }} // Trigger animation when 20% of the element is in view
             >
               <img
                 src={vehicle.image}
@@ -117,7 +126,7 @@ const VehicleList = () => {
               <span className="text-xs bg-gray-700 px-3 py-1 rounded">
                 {vehicle.type}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </main>

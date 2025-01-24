@@ -9,32 +9,66 @@ const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState([]);
   const [vehicles, setVehicles] = useState([]);
-  const [reportsGenerated, setReportsGenerated] = useState(0); // State for reports generated
-  const { bookings } = useBooking(); // Access bookings from BookingContext
+  const [reportsGenerated, setReportsGenerated] = useState(0);
+  const { bookings } = useBooking();
+  const [loading, setLoading] = useState(true); // Loading state
 
-  // Fetch existing data from localStorage
+  // Fetch data from localStorage with error handling
   useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    setUsers(storedUsers);
+    try {
+      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      setUsers(storedUsers);
 
-    const storedVehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
-    setVehicles(storedVehicles);
+      const storedVehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+      setVehicles(storedVehicles);
 
-    const storedReports = JSON.parse(localStorage.getItem("reports")) || [];
-    setReportsGenerated(storedReports.length); // Set number of reports generated
+      // Fetch the report count from localStorage
+      const storedReports = parseInt(localStorage.getItem("reportCount")) || 0;
+      setReportsGenerated(storedReports);
+    } catch (error) {
+      console.error("Error fetching data from localStorage", error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  // Function to handle user updates
+  useEffect(() => {
+    const handleStorageChange = () => {
+      try {
+        // Update reports count whenever there is a change in localStorage
+        const updatedReportCount =
+          parseInt(localStorage.getItem("reportCount")) || 0;
+        setReportsGenerated(updatedReportCount);
+      } catch (error) {
+        console.error("Error fetching reports from localStorage", error);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   const handleUpdateUser = (updatedUser) => {
     const updatedUsers = users.map((user) =>
       user.id === updatedUser.id ? updatedUser : user
     );
 
-    // Update state and localStorage
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-    // Notify user dashboard of changes
+    // Notify other tabs/windows about changes
+    window.dispatchEvent(new Event("storage"));
+  };
+
+  const handleDeleteUser = (userId) => {
+    const updatedUsers = users.filter((user) => user.id !== userId);
+
+    setUsers(updatedUsers);
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
     window.dispatchEvent(new Event("storage"));
   };
 
@@ -106,7 +140,6 @@ const AdminDashboard = () => {
               <button
                 className="ml-3 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
                 onClick={() => {
-                  // localStorage.clear();
                   window.location.href = "/login";
                 }}
               >
@@ -123,25 +156,40 @@ const AdminDashboard = () => {
           {/* Manage Users Section */}
           <section>
             <ul className="space-y-4">
-              {users.map((user) => (
-                <li
-                  key={user.id}
-                  className="bg-white p-4 rounded shadow flex justify-between items-center"
-                >
-                  <div>
-                    <p className="text-lg font-semibold">{user.name}</p>
-                    <p className="text-gray-600">Role: {user.role}</p>
-                  </div>
-                  <button
-                    onClick={() =>
-                      handleUpdateUser({ ...user, role: "updatedRole" })
-                    }
-                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+              {loading ? (
+                <p className="text-white">Loading users...</p>
+              ) : (
+                users.map((user) => (
+                  <li
+                    key={user.id}
+                    className="bg-white p-4 rounded shadow flex justify-between items-center"
                   >
-                    Update Role
-                  </button>
-                </li>
-              ))}
+                    <div>
+                      <p className="text-lg font-semibold">{user.email}</p>
+                      <p className="text-gray-600">Role: {user.role}</p>
+                    </div>
+                    <div>
+                      <button
+                        onClick={() =>
+                          handleUpdateUser({
+                            ...user,
+                            role: user.role === "user" ? "admin" : "user",
+                          })
+                        }
+                        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
+                      >
+                        Toggle Role
+                      </button>
+                      <button
+                        onClick={() => handleDeleteUser(user.id)}
+                        className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
           </section>
 

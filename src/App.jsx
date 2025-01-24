@@ -15,12 +15,17 @@ import VideoWalkthrough from "./pages/VideoWalkthrough";
 import PurchasePage from "./pages/PurchasePage";
 import PurchaseHistory from "./pages/PurchaseHistory";
 
+// Motion import
+import { motion } from "framer-motion";
+
 // Admin pages and components
 import AdminDashboard from "/src/admin/AdminDashboard .jsx";
 import ManageUsers from "./admin/ManageUsers";
 import ManageVehicles from "./admin/ManageVehicles";
 import AdminBookingDetails from "./admin/AdminBookingDetails";
 import GenerateReport from "./admin/GenerateReport";
+import ViewReport from "/src/admin/ViewReport";
+import Download from "/src/admin/Download";
 
 function App() {
   return (
@@ -75,6 +80,8 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/view-report" element={<ViewReport />} />
+          <Route path="/download" element={<Download />} />
 
           {/* User Routes */}
           <Route
@@ -91,11 +98,18 @@ function App() {
           <Route
             path="/dashboardPage"
             element={
-              <PrivateRoute requiredRole="user">
-                <Header />
-                <div className="bg-gray-900 min-h-screen text-white">
-                  <VehicleList />
-                </div>
+              <PrivateRoute role="user">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Header />
+                  <div className="bg-gray-900 min-h-screen text-white">
+                    <VehicleList />
+                  </div>
+                </motion.div>
               </PrivateRoute>
             }
           />
