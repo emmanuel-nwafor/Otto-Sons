@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
-import VehicleAside from "./VehicleAside";
 
 const VehicleList = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -130,7 +129,7 @@ const VehicleList = () => {
                 <div className="flex-col items-center">
                   {" "}
                   <div className="flex-col">
-                    <p className="text-2xl text-green-600 ">
+                    <p className="text-xl text-green-600 ">
                       {vehicle.price ? vehicle.price.toFixed(2) : "N/A"} €/day
                     </p>
                     <div className="flex items-center">
@@ -147,7 +146,6 @@ const VehicleList = () => {
           ))}
         </div>
       </main>
-      <VehicleAside />
     </div>
   );
 };

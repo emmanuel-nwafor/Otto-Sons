@@ -1,6 +1,6 @@
 import React from "react";
 import DropdownMenu from "../components/DropdownMenu";
-import Logo1 from "/src/assets/Logo1.png";
+import Logo1 from "../assets/Logo1.png";
 
 const Header = () => {
   return (
