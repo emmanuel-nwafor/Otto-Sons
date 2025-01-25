@@ -11,7 +11,6 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BookingProvider>
-      {" "}
       <App />
     </BookingProvider>
   </React.StrictMode>

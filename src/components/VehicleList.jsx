@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
+import VehicleAside from "./VehicleAside";
 
 const VehicleList = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -46,9 +47,9 @@ const VehicleList = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 bg-gray-800 text-white p-6 flex-col items-center justify-center z-40 transition-transform transform lg:static lg:translate-x-0 ${
+        className={`fixed top-0 left-0 bg-gray-800 text-white p-6 flex flex-col justify-start z-40 transition-transform transform lg:static lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        } h-screen lg:h-auto lg:overflow-visible sm:overflow-auto`}
       >
         <h2 className="text-lg font-bold mb-4">Filters</h2>
 
@@ -118,18 +119,35 @@ const VehicleList = () => {
                 className="w-full object-cover mb-4 rounded"
               />
               <div className="flex justify-between items-center">
-                <h3 className="font-bold text-2xl">{vehicle.name}</h3>
-                <p className="text-sm mb-2">
-                  {vehicle.price ? vehicle.price.toFixed(2) : "N/A"} €/day
-                </p>
+                <div className="flex-col items-center">
+                  <h3 className="font-bold text-2xl">{vehicle.name}</h3>
+                  <span className="text-sm flex items-center mt-2 rounded">
+                    <i class="bx bx-cog text-xl"></i>{" "}
+                    <i class="bx bxs-cog text-xl translate-x-[-11px]"></i>
+                    {vehicle.type}
+                  </span>
+                </div>
+                <div className="flex-col items-center">
+                  {" "}
+                  <div className="flex-col">
+                    <p className="text-2xl text-green-600 ">
+                      {vehicle.price ? vehicle.price.toFixed(2) : "N/A"} €/day
+                    </p>
+                    <div className="flex items-center">
+                      <div>
+                        <i class="bx bxs-user text-xl"></i>{" "}
+                        <i class="bx bx-user text-xl translate-x-[-11px]"></i>
+                      </div>
+                      <p>{vehicle.status}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="text-xs bg-gray-700 px-3 py-1 rounded">
-                {vehicle.type}
-              </span>
             </motion.div>
           ))}
         </div>
       </main>
+      <VehicleAside />
     </div>
   );
 };

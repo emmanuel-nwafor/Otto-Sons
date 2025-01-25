@@ -57,8 +57,10 @@ function Signup() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Overlay Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60 h-full"></div>
 
+        {/* Left Side Background Image */}
         <div className="hidden items-center justify-center md:flex w-1/2 bg-cover bg-center bg-[url('https://images.pexels.com/photos/3399938/pexels-photo-3399938.jpeg?auto=compress&cs=tinysrgb&w=600')]">
           <div className="m-20">
             <h1 className="text-[50px] text-white">Otto-Sons</h1>
@@ -69,13 +71,32 @@ function Signup() {
         </div>
 
         {/* Right Section with Form */}
-        <div className="w-full md:w-1/2 bg-gray-900 z-50 flex items-center justify-center">
+        <div className="w-full md:w-1/2 bg-gray-900 z-50 flex items-center justify-center relative">
           <motion.div
             className="w-full max-w-md px-8"
             initial={{ x: -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
+            {/* Wave Background */}
+            <div className="absolute inset-0 -z-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 320"
+                className="absolute top-0 w-full h-full"
+                preserveAspectRatio="none"
+              >
+                <path
+                  fill="#1e293b"
+                  fillOpacity="1"
+                  d="M0,160L60,154.7C120,149,240,139,360,144C480,149,600,171,720,165.3C840,160,960,128,1080,133.3C1200,139,1320,181,1380,202.7L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+                ></path>
+              </svg>
+              <div className="absolute top-10 right-10 w-32 h-32 bg-blue-600 rounded-full blur-2xl opacity-30"></div>
+              <div className="absolute bottom-20 left-10 w-48 h-48 bg-pink-600 rounded-full blur-2xl opacity-30"></div>
+            </div>
+
+            {/* Form Content */}
             <h2 className="text-3xl font-bold text-white mb-6">Sign Up</h2>
             <form onSubmit={handleSignup} className="space-y-6">
               <div>
@@ -156,7 +177,7 @@ function Signup() {
               {error && <p className="text-red-500 text-sm">{error}</p>}
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md"
+                className=" w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-md transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500"
               >
                 Sign Up
               </button>
