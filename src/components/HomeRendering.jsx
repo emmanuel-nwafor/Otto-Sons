@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import About from "./About";
 import About2 from "./About2";
 import Testimonials from "./Testimonials";
+import ScrollVelocity from "./ScrollVelocity3D";
 import Partners from "./Partners";
 import ContactPage from "./ContactPage";
 import Footer from "./Footer";
@@ -16,6 +17,7 @@ function HomeRendering() {
         <Hero />
         <Info />
         <About />
+        <ScrollVelocity />
         <About2 />
         <Partners />
         <Testimonials />
